@@ -1,0 +1,34 @@
+import React from 'react';
+import SectionPageLayout from '@/components/SectionPageTemplate';
+
+const ExpoInitiatives: React.FC = () => {
+    const features = [
+        {
+            title: "Expo Live",
+            description: "The global innovation and partnership programme offers funding and support to innovators whose creative solutions make a difference.",
+        },
+        {
+            title: "Global Best Practice Programme",
+            description: "Highlighting projects from around the world that have provided impactful and sustainable interventions to global challenges.",
+        },
+        {
+            title: "Sustainability at Expo",
+            description: "We are delivering one of the most sustainable World Expos ever, with sustainability ingrained in all our construction and buildings.",
+        },
+        {
+            title: "World Majlis",
+            description: "A vibrant forum where diverse points of views are shared on the most important topics of our time inspired by Expo's theme.",
+        }
+    ];
+
+    return (
+        <SectionPageLayout 
+            title="Expo Initiatives" 
+            description="Together with people from across the world, we are creating meaningful impact through a range of programmes and initiatives."
+            image="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=2000"
+            features={features}
+        />
+    );
+};
+
+export default ExpoInitiatives;

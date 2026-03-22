@@ -1,8 +1,21 @@
 import React, { useState } from 'react';
 import { ChevronDown, X, Search } from 'lucide-react';
+import { Link } from '@inertiajs/react';
 
 const Navbar: React.FC = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+
+    const understandingExpoLinks = [
+        { label: "Participants", href: "/understanding-expo/participants" },
+        { label: "Sustainability District", href: "/understanding-expo/sustainability-district" },
+        { label: "Mobility District", href: "/understanding-expo/mobility-district" },
+        { label: "Opportunity District", href: "/understanding-expo/opportunity-district" },
+        { label: "Programme for People and Planet", href: "/understanding-expo/programme-for-people-and-planet" },
+        { label: "Expo Initiatives", href: "/understanding-expo/expo-initiatives" },
+        { label: "World Expos' history", href: "/understanding-expo/world-expos-history" },
+        { label: "After Expo 2020", href: "/understanding-expo/after-expo-2020" },
+    ];
 
     return (
         <nav className="w-full bg-white border-gray-100 sticky top-0 z-[100] font-['expoSans',sans-serif]">
@@ -13,11 +26,13 @@ const Navbar: React.FC = () => {
                         {/* Logo Section */}
                         <div className="flex items-start gap-3 group cursor-pointer">
                             <div className="w-16 h-12 relative">
-                                <img 
-                                    src="/logo.png" 
-                                    alt="Logo" 
-                                    className="w-full h-full object-contain"
-                                />
+                                <Link href="/">
+                                    <img 
+                                        src="/logo.png" 
+                                        alt="Logo" 
+                                        className="w-full h-full object-contain"
+                                    />
+                                </Link>
                             </div>
                         </div>
                         
@@ -50,14 +65,16 @@ const Navbar: React.FC = () => {
                     {/* Mobile Header */}
                     <div className="md:hidden flex w-full items-center justify-between">
                         <div className="w-[92px] h-[51px] relative">
-                            <img 
-                                src="/logo.png" 
-                                alt="Logo" 
-                                className="w-full h-full object-contain"
-                            />
+                            <Link href="/">
+                                <img 
+                                    src="/logo.png" 
+                                    alt="Logo" 
+                                    className="w-full h-full object-contain"
+                                />
+                            </Link>
                         </div>
                         <button 
-                            onClick={() => setIsMenuOpen(true)} 
+                            onClick={() => setIsMobileMenuOpen(true)} 
                             className="flex flex-col gap-[6px] items-end p-2 group"
                         >
                             <span className="w-8 h-[2px] bg-black transition-all" />
@@ -67,7 +84,30 @@ const Navbar: React.FC = () => {
 
                     {/* Desktop Links */}
                     <div className="hidden md:flex items-center gap-10">
-                        <NavLink href="#">Understanding Expo</NavLink>
+                        <div 
+                            className="relative group py-2"
+                            onMouseEnter={() => setActiveDropdown('understanding')}
+                            onMouseLeave={() => setActiveDropdown(null)}
+                        >
+                            <button className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[--gold] transition-colors">
+                                Understanding Expo
+                                <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === 'understanding' ? 'rotate-180' : ''}`} />
+                            </button>
+                            
+                            {/* Dropdown Menu */}
+                            <div className={`absolute top-full left-0 w-[280px] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.1)] rounded-sm border border-gray-50 py-4 transition-all duration-200 origin-top ${activeDropdown === 'understanding' ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'}`}>
+                                {understandingExpoLinks.map((link, idx) => (
+                                    <Link 
+                                        key={idx}
+                                        href={link.href}
+                                        className="block px-8 py-3 text-[15px] font-medium text-gray-800 hover:bg-gray-50 hover:text-[--gold] transition-colors"
+                                    >
+                                        {link.label}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+
                         <NavLink href="#">Experiences</NavLink>
                         <NavLink href="#">Expo Map</NavLink>
                         <NavLink href="#">News</NavLink>
@@ -85,18 +125,20 @@ const Navbar: React.FC = () => {
             </div>
 
             {/* Mobile Menu Overlay */}
-            {isMenuOpen && (
+            {isMobileMenuOpen && (
                 <div className="fixed inset-0 bg-white z-[200] flex flex-col animate-in fade-in duration-300">
                     <div className="py-4 px-6 flex items-center justify-between border-b border-gray-50">
                         <div className="w-[92px] h-[51px] relative">
-                            <img 
-                                src="/logo.png" 
-                                alt="Logo" 
-                                className="w-full h-full object-contain"
-                            />
+                            <Link href="/">
+                                <img 
+                                    src="/logo.png" 
+                                    alt="Logo" 
+                                    className="w-full h-full object-contain"
+                                />
+                            </Link>
                         </div>
                         <button 
-                            onClick={() => setIsMenuOpen(false)}
+                            onClick={() => setIsMobileMenuOpen(false)}
                             className="p-2"
                         >
                             <X size={32} className="text-black stroke-1.5" />
@@ -104,10 +146,23 @@ const Navbar: React.FC = () => {
                     </div>
 
                     <div className="grow overflow-y-auto py-4 px-6">
-                        <MobileNavLink href="#" onClick={() => setIsMenuOpen(false)}>Understanding Expo</MobileNavLink>
-                        <MobileNavLink href="#" onClick={() => setIsMenuOpen(false)}>Experiences</MobileNavLink>
-                        <MobileNavLink href="#" onClick={() => setIsMenuOpen(false)}>Expo Map</MobileNavLink>
-                        <MobileNavLink href="#" onClick={() => setIsMenuOpen(false)}>News</MobileNavLink>
+                        <div className="mb-4">
+                            <div className="text-[14px] font-bold text-gray-400 uppercase tracking-widest mb-4 mt-4">Understanding Expo</div>
+                            {understandingExpoLinks.map((link, idx) => (
+                                <Link 
+                                    key={idx}
+                                    href={link.href}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="block py-4 text-[16px] font-bold text-[#191919] border-b border-gray-50"
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </div>
+                        
+                        <MobileNavLink href="#" onClick={() => setIsMobileMenuOpen(false)}>Experiences</MobileNavLink>
+                        <MobileNavLink href="#" onClick={() => setIsMobileMenuOpen(false)}>Expo Map</MobileNavLink>
+                        <MobileNavLink href="#" onClick={() => setIsMobileMenuOpen(false)}>News</MobileNavLink>
                         
                         <div className="mt-8">
                             <button className="w-full border border-black rounded-lg py-4 text-[14px] font-bold text-center hover:bg-black hover:text-white transition-all">
@@ -140,23 +195,23 @@ interface NavLinkProps {
 }
 
 const NavLink: React.FC<NavLinkProps> = ({ href, children }) => (
-    <a 
+    <Link 
         href={href} 
-        className="text-[14px] font-bold text-gray-900 border-b-2 border-transparent hover:border-[#1A1A1A] py-1 transition-all"
+        className="text-[15px] font-bold text-gray-900 border-b-2 border-transparent hover:border-[#1A1A1A] py-1 transition-all"
     >
         {children}
-    </a>
+    </Link>
 );
 
 const MobileNavLink: React.FC<NavLinkProps & { onClick: () => void }> = ({ href, children, onClick }) => (
-    <a 
+    <Link 
         href={href} 
         onClick={onClick}
         className="flex items-center justify-between text-[16px] font-bold text-[#191919] py-5 border-b border-gray-100"
     >
         {children}
         <ChevronDown size={18} className="text-gray-400 -rotate-90" />
-    </a>
+    </Link>
 );
 
 export default Navbar;
