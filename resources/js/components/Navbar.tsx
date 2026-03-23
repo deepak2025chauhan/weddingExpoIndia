@@ -4,7 +4,6 @@ import { Link } from '@inertiajs/react';
 
 const Navbar: React.FC = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
     const understandingExpoLinks = [
         { label: "Participants", href: "/understanding-expo/participants" },
@@ -15,6 +14,19 @@ const Navbar: React.FC = () => {
         { label: "Expo Initiatives", href: "/understanding-expo/expo-initiatives" },
         { label: "World Expos' history", href: "/understanding-expo/world-expos-history" },
         { label: "After Expo 2020", href: "/understanding-expo/after-expo-2020" },
+    ];
+
+    const experiencesLinks = [
+        { label: "UAE Golden Jubilee", href: "/experiences/uae-golden-jubilee" },
+        { label: "Theme Weeks", href: "/experiences/theme-weeks" },
+        { label: "Innovation & technology", href: "/experiences/innovation-and-technology" },
+        { label: "Entertainment", href: "/experiences/entertainment" },
+        { label: "Arts & culture", href: "/experiences/arts-culture" },
+        { label: "Food & livelihoods", href: "/experiences/food-and-livelihoods" },
+        { label: "Sports, fitness & wellbeing", href: "/experiences/sports-fitness-wellbeing" },
+        { label: "Architecture", href: "/experiences/architecture" },
+        { label: "Business & entrepreneurship", href: "/experiences/business-entrepreneurship" },
+        { label: "Education programmes", href: "/experiences/education-programmes" },
     ];
 
     return (
@@ -84,18 +96,14 @@ const Navbar: React.FC = () => {
 
                     {/* Desktop Links */}
                     <div className="hidden md:flex items-center gap-10">
-                        <div 
-                            className="relative group py-2"
-                            onMouseEnter={() => setActiveDropdown('understanding')}
-                            onMouseLeave={() => setActiveDropdown(null)}
-                        >
+                        <div className="relative group py-2">
                             <button className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[--gold] transition-colors">
                                 Understanding Expo
-                                <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === 'understanding' ? 'rotate-180' : ''}`} />
+                                <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180" />
                             </button>
                             
                             {/* Dropdown Menu */}
-                            <div className={`absolute top-full left-0 w-[280px] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.1)] rounded-sm border border-gray-50 py-4 transition-all duration-200 origin-top ${activeDropdown === 'understanding' ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'}`}>
+                            <div className="absolute top-full left-0 w-[280px] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.1)] rounded-sm border border-gray-50 py-4 transition-all duration-200 origin-top z-50 opacity-0 scale-y-0 pointer-events-none group-hover:opacity-100 group-hover:scale-y-100 group-hover:pointer-events-auto">
                                 {understandingExpoLinks.map((link, idx) => (
                                     <Link 
                                         key={idx}
@@ -108,7 +116,25 @@ const Navbar: React.FC = () => {
                             </div>
                         </div>
 
-                        <NavLink href="#">Experiences</NavLink>
+                        <div className="relative group py-2">
+                            <button className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[--gold] transition-colors">
+                                Experiences
+                                <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180" />
+                            </button>
+                            
+                            {/* Dropdown Menu */}
+                            <div className="absolute top-full left-0 w-[280px] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.1)] rounded-sm border border-gray-50 py-4 transition-all duration-200 origin-top z-50 opacity-0 scale-y-0 pointer-events-none group-hover:opacity-100 group-hover:scale-y-100 group-hover:pointer-events-auto">
+                                {experiencesLinks.map((link, idx) => (
+                                    <Link 
+                                        key={idx}
+                                        href={link.href}
+                                        className="block px-8 py-3 text-[15px] font-medium text-gray-800 hover:bg-gray-50 hover:text-[--gold] transition-colors"
+                                    >
+                                        {link.label}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
                         <NavLink href="#">Expo Map</NavLink>
                         <NavLink href="#">News</NavLink>
                     </div>
@@ -160,7 +186,19 @@ const Navbar: React.FC = () => {
                             ))}
                         </div>
                         
-                        <MobileNavLink href="#" onClick={() => setIsMobileMenuOpen(false)}>Experiences</MobileNavLink>
+                        <div className="mb-4">
+                            <div className="text-[14px] font-bold text-gray-400 uppercase tracking-widest mb-4 mt-8">Experiences</div>
+                            {experiencesLinks.map((link, idx) => (
+                                <Link 
+                                    key={idx}
+                                    href={link.href}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="block py-4 text-[16px] font-bold text-[#191919] border-b border-gray-50"
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </div>
                         <MobileNavLink href="#" onClick={() => setIsMobileMenuOpen(false)}>Expo Map</MobileNavLink>
                         <MobileNavLink href="#" onClick={() => setIsMobileMenuOpen(false)}>News</MobileNavLink>
                         

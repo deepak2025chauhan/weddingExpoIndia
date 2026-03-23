@@ -25,7 +25,7 @@ const Participants: React.FC = () => {
         <SectionPageLayout 
             title="Participants" 
             description="Explore the power of connections in shaping our world. From organisations to 192 participating nations, you'll be engulfed in unique architecture, culture and inspiring innovations."
-            image="https://www.expo2020dubai.com/-/media/expo2020/understanding-expo/participants/participants-hero-desktop.jpg?mw=1366&hash=6BAF8A2E8B9A9A8A8A8A8A8A8A8A8A8A" // I'll try to use a real URL if possible, fallback to unsplash if needed
+            image="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=1920"
             features={features}
         />
     );

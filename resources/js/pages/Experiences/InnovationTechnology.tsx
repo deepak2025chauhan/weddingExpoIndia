@@ -1,0 +1,30 @@
+import React from 'react';
+import SectionPageLayout from '@/components/SectionPageTemplate';
+
+const InnovationTechnology: React.FC = () => {
+    const features = [
+        {
+            title: "Artificial Intelligence (UK Pavilion)",
+            description: "Discover a collective message pavilion curated by AI and inspired by Stephen Hawking.",
+        },
+        {
+            title: "Future of Air Travel (Emirates Pavilion)",
+            description: "Experience the future of commercial aviation in the year 2071 and beyond.",
+        },
+        {
+            title: "Healthcare Innovations",
+            description: "Explore solutions for global health challenges, including humanitarian drone corridors.",
+        }
+    ];
+
+    return (
+        <SectionPageLayout 
+            title="Innovation & Technology" 
+            description="Discover life-changing innovations and experience a truly connected high-tech world through countless technological advances."
+            image="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1920"
+            features={features}
+        />
+    );
+};
+
+export default InnovationTechnology;

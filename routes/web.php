@@ -49,3 +49,45 @@ Route::prefix('understanding-expo')->group(function () {
         return Inertia::render('UnderstandingExpo/AfterExpo2020');
     })->name('understanding.after');
 });
+
+Route::prefix('experiences')->group(function () {
+    Route::get('/uae-golden-jubilee', function () {
+        return Inertia::render('Experiences/UAEGoldenJubilee');
+    })->name('experiences.jubilee');
+
+    Route::get('/theme-weeks', function () {
+        return Inertia::render('Experiences/ThemeWeeks');
+    })->name('experiences.theme-weeks');
+
+    Route::get('/innovation-and-technology', function () {
+        return Inertia::render('Experiences/InnovationTechnology');
+    })->name('experiences.innovation');
+
+    Route::get('/entertainment', function () {
+        return Inertia::render('Experiences/Entertainment');
+    })->name('experiences.entertainment');
+
+    Route::get('/arts-culture', function () {
+        return Inertia::render('Experiences/ArtsCulture');
+    })->name('experiences.arts');
+
+    Route::get('/food-and-livelihoods', function () {
+        return Inertia::render('Experiences/FoodLivelihoods');
+    })->name('experiences.food');
+
+    Route::get('/sports-fitness-wellbeing', function () {
+        return Inertia::render('Experiences/SportsFitnessWellbeing');
+    })->name('experiences.sports');
+
+    Route::get('/architecture', function () {
+        return Inertia::render('Experiences/Architecture');
+    })->name('experiences.architecture');
+
+    Route::get('/business-entrepreneurship', function () {
+        return Inertia::render('Experiences/BusinessEntrepreneurship');
+    })->name('experiences.business');
+
+    Route::get('/education-programmes', function () {
+        return Inertia::render('Experiences/EducationProgrammes');
+    })->name('experiences.education');
+});
