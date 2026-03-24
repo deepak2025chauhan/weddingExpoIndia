@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
                     </div>
 
                     {/* Right Column: Legal & Policies */}
-                    <div>
+                    {/* <div>
                         <h4 className="text-[13px] font-bold tracking-[0.1em] uppercase mb-6 text-white">
                             LEGAL & POLICIES
                         </h4>
@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
                             <li><Link href={route('footer.visitor')} className="hover:text-white/70 transition-colors">Visitor Terms and Conditions</Link></li>
                             <li><Link href={route('footer.worker')} className="hover:text-white/70 transition-colors">Worker Welfare</Link></li>
                         </ul>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Bottom Bar */}
