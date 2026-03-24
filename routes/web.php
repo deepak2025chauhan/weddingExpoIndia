@@ -91,3 +91,62 @@ Route::prefix('experiences')->group(function () {
         return Inertia::render('Experiences/EducationProgrammes');
     })->name('experiences.education');
 });
+
+Route::prefix('footer')->group(function () {
+    Route::get('/privacy-policy', function () {
+        return Inertia::render('Footer/PrivacyPolicy');
+    })->name('footer.privacy');
+
+    Route::get('/terms-conditions', function () {
+        return Inertia::render('Footer/TermsConditions');
+    })->name('footer.terms');
+
+    Route::get('/cookie-policy', function () {
+        return Inertia::render('Footer/CookiePolicy');
+    })->name('footer.cookies');
+
+    Route::get('/contact-us', function () {
+        return Inertia::render('Footer/ContactUs');
+    })->name('footer.contact');
+
+    Route::get('/business', function () {
+        return Inertia::render('Footer/Business');
+    })->name('footer.business');
+
+    Route::get('/media-services', function () {
+        return Inertia::render('Footer/MediaServices');
+    })->name('footer.media');
+
+    Route::get('/faqs', function () {
+        return Inertia::render('Footer/FAQs');
+    })->name('footer.faqs');
+
+    Route::get('/disclaimer', function () {
+        return Inertia::render('Footer/Disclaimer');
+    })->name('footer.disclaimer');
+
+    Route::get('/corporate-policies', function () {
+        return Inertia::render('Footer/CorporatePolicies');
+    })->name('footer.corporate');
+
+    Route::get('/visitor-terms', function () {
+        return Inertia::render('Footer/VisitorTerms');
+    })->name('footer.visitor');
+
+    Route::get('/worker-welfare', function () {
+        return Inertia::render('Footer/WorkerWelfare');
+    })->name('footer.worker');
+});
+
+Route::prefix('discover')->group(function () {
+    Route::get('/exhibitors', function () {
+        return Inertia::render('Discovery/Exhibitors');
+    })->name('discover.exhibitors');
+
+    Route::get('/exhibitors/{slug}', function ($slug) {
+        // In a real app, you'd fetch the exhibitor from the DB
+        return Inertia::render('Discovery/ExhibitorDetail', [
+            'exhibitor' => null // Passing null to use demo data in component
+        ]);
+    })->name('discover.exhibitor-detail');
+});

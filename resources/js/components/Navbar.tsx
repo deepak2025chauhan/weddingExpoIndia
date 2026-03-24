@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { ChevronDown, X, Search } from 'lucide-react';
 import { Link } from '@inertiajs/react';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+    visible?: boolean;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const understandingExpoLinks = [
@@ -30,7 +34,7 @@ const Navbar: React.FC = () => {
     ];
 
     return (
-        <nav className="w-full bg-white border-gray-100 sticky top-0 z-[100] font-['expoSans',sans-serif]">
+        <nav className={`w-full bg-white border-gray-100 sticky top-0 z-[100] font-['expoSans',sans-serif] transition-transform duration-500 ease-in-out ${visible ? 'translate-y-0' : '-translate-y-full'}`}>
             {/* Top Tier */}
             <div className="border-b-[0.8px] max-w-7xl mx-auto border-[rgba(208,208,208,0.25)] py-3 px-6 lg:px-0 hidden md:block">
                 <div className="flex items-center justify-between">
@@ -135,17 +139,20 @@ const Navbar: React.FC = () => {
                                 ))}
                             </div>
                         </div>
-                        <NavLink href="#">Expo Map</NavLink>
-                        <NavLink href="#">News</NavLink>
+                        {/* <NavLink href="#">Expo Map</NavLink>
+                        <NavLink href="#">News</NavLink> */}
                     </div>
 
                     <div className="flex items-center gap-4">
                         <button className="p-2 hover:bg-gray-50 rounded-full transition-colors hidden md:block">
                             <Search size={20} />
                         </button>
-                        <button className="border-2 border-black rounded-lg px-6 py-2 text-[14px] font-bold hover:bg-black hover:text-white transition-all hidden md:block">
-                            Discover all countries
-                        </button>
+                        <Link 
+                            href={route('discover.exhibitors')}
+                            className="border-2 border-black rounded-sm px-6 py-2 text-[14px] font-bold hover:bg-black hover:text-white transition-all hidden md:block"
+                        >
+                            Discover all exhibitors
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -203,9 +210,13 @@ const Navbar: React.FC = () => {
                         <MobileNavLink href="#" onClick={() => setIsMobileMenuOpen(false)}>News</MobileNavLink>
                         
                         <div className="mt-8">
-                            <button className="w-full border border-black rounded-lg py-4 text-[14px] font-bold text-center hover:bg-black hover:text-white transition-all">
-                                Discover all countries
-                            </button>
+                            <Link 
+                                href={route('discover.exhibitors')}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="block w-full border border-black rounded-sm py-4 text-[14px] font-bold text-center hover:bg-black hover:text-white transition-all"
+                            >
+                                Discover all exhibitors
+                            </Link>
                         </div>
                     </div>
 

@@ -1,5 +1,6 @@
 import { Twitter, Instagram, Facebook, Youtube, Linkedin, ChevronDown } from "lucide-react";
 import React from "react";
+import { Link } from "@inertiajs/react";
 
 const Footer: React.FC = () => {
     return (
@@ -10,25 +11,46 @@ const Footer: React.FC = () => {
                     {/* Left Column: Business & Media */}
                     <div className="flex flex-col gap-10">
                         <div>
-                            <h4 className="text-[13px] font-bold tracking-[0.1em] uppercase text-white hover:text-white/70 transition-colors cursor-pointer">
+                            <Link 
+                                href={route('footer.business')} 
+                                className="text-[13px] font-bold tracking-[0.1em] uppercase text-white hover:text-white/70 transition-colors"
+                            >
                                 BUSINESS
-                            </h4>
+                            </Link>
                         </div>
                         <div>
-                            <h4 className="text-[13px] font-bold tracking-[0.1em] uppercase text-white hover:text-white/70 transition-colors cursor-pointer">
+                            <Link 
+                                href={route('footer.media')} 
+                                className="text-[13px] font-bold tracking-[0.1em] uppercase text-white hover:text-white/70 transition-colors"
+                            >
                                 MEDIA SERVICES
-                            </h4>
+                            </Link>
                         </div>
                     </div>
 
-                    {/* Right Column: Support */}
+                    {/* Middle Column: Support */}
                     <div>
                         <h4 className="text-[13px] font-bold tracking-[0.1em] uppercase mb-6 text-white">
                             SUPPORT
                         </h4>
                         <ul className="space-y-4 text-[14px]">
-                            <li><a href="#" className="hover:text-white/70 transition-colors">FAQs</a></li>
-                            <li><a href="#" className="hover:text-white/70 transition-colors">Contact us</a></li>
+                            <li><Link href={route('footer.faqs')} className="hover:text-white/70 transition-colors">FAQs</Link></li>
+                            <li><Link href={route('footer.contact')} className="hover:text-white/70 transition-colors">Contact us</Link></li>
+                        </ul>
+                    </div>
+
+                    {/* Right Column: Legal & Policies */}
+                    <div>
+                        <h4 className="text-[13px] font-bold tracking-[0.1em] uppercase mb-6 text-white">
+                            LEGAL & POLICIES
+                        </h4>
+                        <ul className="space-y-4 text-[14px]">
+                            <li><Link href={route('footer.privacy')} className="hover:text-white/70 transition-colors">Privacy and Cookies</Link></li>
+                            <li><Link href={route('footer.terms')} className="hover:text-white/70 transition-colors">Terms and Conditions</Link></li>
+                            <li><Link href={route('footer.disclaimer')} className="hover:text-white/70 transition-colors">Disclaimer</Link></li>
+                            <li><Link href={route('footer.corporate')} className="hover:text-white/70 transition-colors">Corporate Policies</Link></li>
+                            <li><Link href={route('footer.visitor')} className="hover:text-white/70 transition-colors">Visitor Terms and Conditions</Link></li>
+                            <li><Link href={route('footer.worker')} className="hover:text-white/70 transition-colors">Worker Welfare</Link></li>
                         </ul>
                     </div>
                 </div>
@@ -40,9 +62,9 @@ const Footer: React.FC = () => {
                         <span className="text-[13px] text-white/90">
                             © Wedding Expo India. All rights reserved, 2026
                         </span>
-                        <a href="#" className="text-[13px] font-bold hover:text-white/70 transition-colors">
+                        <Link href={route('footer.privacy')} className="text-[13px] font-bold hover:text-white/70 transition-colors">
                             Legal
-                        </a>
+                        </Link>
                     </div>
 
                     {/* Social Icons & Language */}
