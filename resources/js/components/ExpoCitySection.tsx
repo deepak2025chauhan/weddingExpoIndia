@@ -8,15 +8,17 @@ const ExpoCitySection: React.FC = () => {
                 {/* Left Side: Content */}
                 <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center">
                     <h2 className="text-[24px] md:text-[36px] font-bold text-black mb-6 md:mb-8 font-['expoSans'] leading-tight">
-                        <span className="heading-underline">After Expo, a human-centric</span> <br className="hidden md:block" />
-                        smart city rises: Expo City <ExternalLink size={20} className="inline-block ml-2 text-black/70 translate-y-[-2px] md:w-6 md:h-6" />
+                        <span className="heading-underline">Beyond the Expo:</span> <br className="hidden md:block" />
+                       Shaping the Future of Destination Weddings
+{/* <ExternalLink size={20} className="inline-block ml-2 text-black/70 translate-y-[-2px] md:w-6 md:h-6" /> */}
                     </h2>
                     
-                    <p className="text-[15px] md:text-[18px] text-black/80 font-normal font-['expoSans'] leading-relaxed">
-                        Transitioning into Expo City, the Expo 2020 Dubai site will live long 
-                        after we close our doors at the end of March 2022. As an integrated 
-                        mixed-use community, it will carry on and fulfill Expo&apos;s founding 
-                        vision to be an ecosystem to connect, create and innovate.
+                    <p className="text-[15px] md:text-[18px] text-black/80 text-justify font-normal font-['expoSans'] leading-relaxed">
+                       Wedding India Expo is not just a two-day exhibition — it is a platform designed to build long-term value for the destination wedding industry.
+
+As the industry evolves globally, the expo creates an ecosystem where venues, planners, designers, and service providers continue to connect, collaborate, and grow beyond the event itself.
+
+From international partnerships to new business opportunities, Wedding India Expo is where the future of luxury weddings begins.
                     </p>
                 </div>
 

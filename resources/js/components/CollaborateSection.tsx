@@ -3,30 +3,30 @@ import React, { useState } from "react";
 
 const slides = [
     {
-        title: "Showcasing real solutions to the world's biggest challenges",
-        description: "The Global Best Practice Programme highlights projects from around the world that have provided impactful and sustainable interventions, with a view to expanding them elsewhere.",
-        linkText: "See the inspiring Best Practices",
+        title: "Showcasing the Future of Luxury Weddings",
+        description: "Discover curated experiences, global wedding trends, and innovative concepts shaping the destination wedding industry.",
+        linkText: "Explore Luxury Trends",
         cards: [
-            "Protecting ocean ecosystems and economy",
-            "Improving sustainable terrestrial and marine management"
+            "Bespoke Destination Experiences",
+            "Sustainable Luxury Ceremonies"
         ]
     },
     {
-        title: "Innovation can come from everywhere to anyone",
-        description: "The Expo Live global innovation and partnership programme offers funding, support and exposure to innovators globally whose creative solutions are making a difference to societies, the environment or both.",
-        linkText: "Learn more about Expo Live",
+        title: "Where Creativity Meets Celebration",
+        description: "The Wedding Innovation programme spotlights the world's most creative designers, tech-forward planners, and sustainable artisans making a difference in the celebration industry.",
+        linkText: "Meet the Wedding Innovators",
         cards: [
-            "Global Innovators",
-            "University Innovation"
+            "Digital Concierge Services",
+            "Eco-Conscious Decor Solutions"
         ]
     },
     {
-        title: "Highlighting business opportunities",
-        description: "The Expo Business Programme is a platform to highlight business opportunities, cutting-edge technologies and progress achieved by the UAE, participating countries and Expo Partners.",
-        linkText: "Explore Business Opportunities",
+        title: "Unlocking Global Business Opportunities",
+        description: "The Wedding Business Programme is a premium platform for networking, highlighting cutting-edge hospitality technologies, and forging partnerships between international brands and Indian wedding leaders.",
+        linkText: "Explore B2B Opportunities",
         cards: [
-            "Business Events",
-            "Thematic Business Forums"
+            "Strategic Partner Meetups",
+            "Hospitality Investment Forums"
         ]
     }
 ];
@@ -67,8 +67,7 @@ const CollaborateSection: React.FC = () => {
                             Connect and Collaborate
                         </h2>
                         <p className="text-[16px] md:text-[20px] text-black/95 font-['expoSans'] font-medium leading-relaxed">
-                            We catalysed collaboration, stimulated innovation and created tangible opportunities for all.
-                        </p>
+                            Bringing together wedding planners, global venues, designers, and luxury brands to create meaningful partnerships and business opportunities. </p>
                     </div>
                 </div>
 
@@ -86,7 +85,7 @@ const CollaborateSection: React.FC = () => {
                             <Play fill="currentColor" size={24} className="ml-1 md:w-7 md:h-7" />
                         </div>
                         <h3 className="text-[24px] md:text-[32px] font-bold font-['expoSans'] leading-tight max-w-sm">
-                            Explore our Programme for People and Planet
+                        Explore the World of Destination Weddings
                         </h3>
                     </div>
                 </div>

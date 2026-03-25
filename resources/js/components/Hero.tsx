@@ -23,21 +23,22 @@ const Hero: React.FC = () => {
             <div className="relative z-10 h-full max-w-7xl mx-auto px-6 flex flex-col justify-center">
                 <div className="max-w-xl animate-in fade-in slide-in-from-left duration-1000">
                     <h2 className="text-[16px] md:text-[22px] font-normal text-white mb-1 font-['expoSans'] opacity-90">
-                        We had an incredible time
+                      3–4 September 2026 | IICC Yashobhoomi, New Delhi
                     </h2>
-                    <h2 className="text-[16px] md:text-[22px] font-normal text-white mb-6 font-['expoSans'] opacity-90">
+                    {/* <h2 className="text-[16px] md:text-[22px] font-normal text-white mb-6 font-['expoSans'] opacity-90">
                         welcoming the world!
-                    </h2>
+                    </h2> */}
                     <h1 className="text-[24px] md:text-[42px] font-bold text-white mb-10 font-['expoSans'] leading-tight">
-                        Want to relive the best moments?
+                     India’s First International Destination Wedding Exhibition
                     </h1>
                     
                     <a 
                         href="#" 
                         className="inline-flex items-center gap-3 text-white text-[15px] md:text-[16px] font-bold hover:underline group pointer-events-auto"
                     >
-                        Visit Virtual Expo Dubai
-                        <ExternalLink size={20} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                     
+Where the World of Destination Weddings Meets India
+                        {/* <ExternalLink size={20} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /> */}
                     </a>
                 </div>
             </div>

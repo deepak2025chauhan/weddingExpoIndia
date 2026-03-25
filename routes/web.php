@@ -150,3 +150,7 @@ Route::prefix('discover')->group(function () {
         ]);
     })->name('discover.exhibitor-detail');
 });
+
+Route::get('/register-now', function () {
+    return Inertia::render('RegisterNow');
+})->name('register.now');

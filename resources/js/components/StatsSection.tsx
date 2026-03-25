@@ -50,11 +50,11 @@ const StatsSection: React.FC = () => {
     const containerRef = useRef<HTMLElement>(null);
 
     const stats = [
-        { number: "24.1", label: "visits from 178 countries", suffix: "M" },
-        { number: "30.3", label: "came from overseas", suffix: "%" },
-        { number: "1", label: "school visits", suffix: "M+" },
-        { number: "107000", label: "visits from people of determination", suffix: "" },
-        { number: "5.8", label: "people impacted by Expo Live grants", suffix: "M+" },
+        { number: "75", label: "Indian wedding industry size", suffix: "B+" },
+        { number: "25", label: "Annual growth in destination weddings", suffix: "%" },
+        { number: "6000", label: "Premium exhibition space", suffix: "sqm" },
+        { number: "150", label: "Curated luxury exhibitors", suffix: "+" },
+        { number: "150", label: "High-intent wedding buyers & professionals", suffix: "+" },
     ];
 
     const containerVariants = {
@@ -97,10 +97,12 @@ const StatsSection: React.FC = () => {
                     className="text-center mb-16"
                 >
                     <h1 className="text-[36px] md:text-[54px] font-bold text-white mb-4 font-['expoSans']">
-                        What we achieved together
+                        WHAT WE ARE BUILDING
                     </h1>
-                    <p className="text-[16px] md:text-[20px] text-white/70 font-normal font-['expoSans'] uppercase tracking-[0.2em]">
-                        Expo 2020 Dubai in numbers
+                    <p className="text-[16px] md:text-[20px] text-white font-bold font-['expoSans'] uppercase tracking-[0.2em]">
+                        The Scale of Opportunity <br />
+                        India’s destination wedding market is evolving into a global luxury industry.
+
                     </p>
                 </motion.div>
 
