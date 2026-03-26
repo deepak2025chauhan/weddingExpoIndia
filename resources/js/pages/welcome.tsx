@@ -12,7 +12,7 @@ import React from 'react';
 export default function Welcome() {
     return (
         <>
-            <Head title="Wedding Expo India" />
+            <Head title="World's Biggest Destination Wedding Exhibition" />
             <div className="min-h-screen bg-white">
                 <Navbar />
                 <main>

@@ -48,7 +48,7 @@ const Exhibitors = () => {
 
     return (
         <div className="min-h-screen bg-white font-['expoSans',sans-serif] overflow-clip">
-            <Head title="Country Pavilions | Wedding Expo India" />
+            <Head title="Country Pavilions" />
             
             {/* Unified Top Section that slides up together */}
             <div 

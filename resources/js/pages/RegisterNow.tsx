@@ -64,7 +64,9 @@ export default function RegisterNow() {
         setExhibitorData({ ...exhibitorData, [e.target.name]: e.target.value });
     };
 
-    const nextStep = () => setStep((prev) => Math.min(prev + 1, 3));
+    const totalSteps = registrationType === 'visitor' ? 4 : 3;
+
+    const nextStep = () => setStep((prev) => Math.min(prev + 1, totalSteps));
     const prevStep = () => setStep((prev) => Math.max(prev - 1, 1));
 
     const finalSubmit = (e: React.FormEvent) => {
@@ -78,7 +80,7 @@ export default function RegisterNow() {
             <div className="w-full bg-[var(--text-main)]/10 h-1.5 rounded-full mb-8 overflow-hidden">
                 <div 
                     className="h-full bg-[var(--gold)] transition-all duration-500 rounded-full" 
-                    style={{ width: `${(step / 3) * 100}%` }}
+                    style={{ width: `${(step / totalSteps) * 100}%` }}
                 />
             </div>
         );
@@ -87,7 +89,11 @@ export default function RegisterNow() {
     // --- VISITOR FUNNEL ---
     const renderVisitorStep1 = () => (
         <div className="animate-in fade-in slide-in-from-right-4 duration-500 space-y-6">
-            <h3 className="text-xl font-['expoSans'] font-semibold text-[var(--gold-dark)] mb-4">Step 1: Your Details</h3>
+            <div className="mb-2">
+                <h3 className="text-xl font-['expoSans'] font-semibold text-[var(--gold-dark)] mb-1">Step 1: Your Details</h3>
+                <p className="text-sm text-[var(--text-muted)]">Please provide your basic contact information to get started.</p>
+            </div>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-1">
                     <label className="text-[10px] uppercase tracking-widest text-[var(--text-muted)] font-bold">Full Name *</label>
@@ -103,7 +109,19 @@ export default function RegisterNow() {
                 <input name="email" type="email" onChange={handleVisitorChange} value={visitorData.email} required className="input-couture" placeholder="john@example.com" />
             </div>
 
-            <h4 className="text-md font-['expoSans'] font-semibold mt-6 pt-6 border-t border-gray-100">Wedding Details</h4>
+            <button type="button" onClick={nextStep} className="w-full mt-6 bg-[var(--text-main)] hover:bg-black text-white font-bold tracking-[0.2em] uppercase py-4 text-[12px] transition-all rounded-sm">
+                Next Step
+            </button>
+        </div>
+    );
+
+    const renderVisitorStep2 = () => (
+        <div className="animate-in fade-in slide-in-from-right-4 duration-500 space-y-6">
+            <div className="mb-2">
+                <h3 className="text-xl font-['expoSans'] font-semibold text-[var(--gold-dark)] mb-1">Step 2: Wedding Details</h3>
+                <p className="text-sm text-[var(--text-muted)]">Help us personalize your exhibition experience.</p>
+            </div>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-1">
                     <label className="text-[10px] uppercase tracking-widest text-[var(--text-muted)] font-bold">When are you planning to marry? *</label>
@@ -135,13 +153,19 @@ export default function RegisterNow() {
                     <option value="25L+">₹25L+</option>
                 </select>
             </div>
-            <button type="button" onClick={nextStep} className="w-full mt-6 bg-[var(--text-main)] hover:bg-black text-white font-bold tracking-[0.2em] uppercase py-4 text-[12px] transition-all rounded-sm">
-                Next Step
-            </button>
+
+            <div className="flex gap-4 mt-6">
+                <button type="button" onClick={prevStep} className="w-1/3 bg-transparent border border-[var(--text-main)]/20 text-[var(--text-main)] font-bold tracking-[0.2em] uppercase py-4 text-[12px] transition-all hover:bg-gray-50 rounded-sm">
+                    Back
+                </button>
+                <button type="button" onClick={nextStep} className="w-2/3 bg-[var(--text-main)] hover:bg-black text-white font-bold tracking-[0.2em] uppercase py-4 text-[12px] transition-all rounded-sm">
+                    Next Step
+                </button>
+            </div>
         </div>
     );
 
-    const renderVisitorStep2 = () => (
+    const renderVisitorStep3 = () => (
         <div className="animate-in fade-in slide-in-from-right-4 duration-500 text-center space-y-8 py-4">
             <h3 className="text-2xl font-['expoSans'] font-bold text-[var(--gold-dark)]">Congratulations! You are eligible for:</h3>
             
@@ -177,9 +201,9 @@ export default function RegisterNow() {
         </div>
     );
 
-    const renderVisitorStep3 = () => (
+    const renderVisitorStep4 = () => (
         <div className="animate-in fade-in slide-in-from-right-4 duration-500 space-y-6">
-            <h3 className="text-xl font-['expoSans'] font-semibold text-[var(--gold-dark)] mb-4">Step 3: Final Details</h3>
+            <h3 className="text-xl font-['expoSans'] font-semibold text-[var(--gold-dark)] mb-4">Step 4: Final Details</h3>
             
             <div className="space-y-1">
                 <label className="text-[10px] uppercase tracking-widest text-[var(--text-muted)] font-bold">Why are you visiting? *</label>
@@ -376,11 +400,11 @@ export default function RegisterNow() {
 
     return (
         <>
-            <Head title="Register Now | Wedding Expo India" />
+            <Head title="Register Now | Plan Your Visit & Exhibit" />
             <div className="min-h-screen flex flex-col bg-[var(--bg-offwhite)] text-[var(--text-main)] selection:bg-[var(--gold)] selection:text-white">
                 <Navbar />
                 
-                <main className="flex-grow relative flex flex-col items-center justify-start pt-32 pb-20 px-4 md:px-8">
+                <main className="flex-grow relative flex flex-col items-center justify-start pt-5 pb-20 px-4 md:px-8">
                     {/* Background subtle styling */}
                     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
                         <img 
@@ -454,14 +478,15 @@ export default function RegisterNow() {
                                 {registrationType === 'visitor' ? 'Visitor Funnel' : 'Exhibitor Funnel'}
                             </h2>
                             <span className="bg-[var(--gold)] text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase shadow-sm">
-                                Step {step} of 3
+                                Step {step} of {totalSteps}
                             </span>
                         </div>
 
                         <form onSubmit={finalSubmit}>
-                            {registrationType === 'visitor' && step === 1 && renderVisitorStep1()}
+                             {registrationType === 'visitor' && step === 1 && renderVisitorStep1()}
                             {registrationType === 'visitor' && step === 2 && renderVisitorStep2()}
                             {registrationType === 'visitor' && step === 3 && renderVisitorStep3()}
+                            {registrationType === 'visitor' && step === 4 && renderVisitorStep4()}
 
                             {registrationType === 'exhibitor' && step === 1 && renderExhibitorStep1()}
                             {registrationType === 'exhibitor' && step === 2 && renderExhibitorStep2()}

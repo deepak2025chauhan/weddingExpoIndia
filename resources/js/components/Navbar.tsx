@@ -183,9 +183,9 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                         <div className="w-[120px] h-auto relative">
                             <Link href="/">
                                 <img
-                                    src="/logo.png"
+                                    src="/logo.svg"
                                     alt="Logo"
-                                    className="w-full h-auto object-contain"
+                                    className="w-full"
                                 />
                             </Link>
                         </div>

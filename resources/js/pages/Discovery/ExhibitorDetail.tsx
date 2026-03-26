@@ -57,7 +57,7 @@ const ExhibitorDetail = ({ exhibitor }: { exhibitor: Exhibitor | null }) => {
 
     return (
         <div className="min-h-screen bg-white font-['expoSans',sans-serif]">
-            <Head title={`${data.name} | Wedding Expo India`} />
+            <Head title={data.name} />
             <Navbar />
 
             {/* Hero Image Section */}
