@@ -12,7 +12,10 @@ const ExhibitorApplication = () => {
         <div className="min-h-screen bg-white font-['expoSans',sans-serif]">
             <Head title="Exhibitor Application" />
             
-            <LeadCaptureModal onSuccess={() => setIsUnlocked(true)} />
+            <LeadCaptureModal 
+                onSuccess={() => setIsUnlocked(true)} 
+                onClose={() => setIsUnlocked(true)} 
+            />
 
             <Navbar />
 

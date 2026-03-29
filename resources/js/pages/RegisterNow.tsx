@@ -28,7 +28,7 @@ type ExhibitorData = {
 
 export default function RegisterNow() {
     const [registrationType, setRegistrationType] = useState<'visitor' | 'exhibitor'>('visitor');
-    
+
     // Steps state (1 to 3)
     const [step, setStep] = useState(1);
 
@@ -78,8 +78,8 @@ export default function RegisterNow() {
     const renderProgressBar = () => {
         return (
             <div className="w-full bg-[var(--text-main)]/10 h-1.5 rounded-full mb-8 overflow-hidden">
-                <div 
-                    className="h-full bg-[var(--gold)] transition-all duration-500 rounded-full" 
+                <div
+                    className="h-full bg-[var(--gold)] transition-all duration-500 rounded-full"
                     style={{ width: `${(step / totalSteps) * 100}%` }}
                 />
             </div>
@@ -93,7 +93,7 @@ export default function RegisterNow() {
                 <h3 className="text-xl font-['expoSans'] font-semibold text-[var(--gold-dark)] mb-1">Step 1: Your Details</h3>
                 <p className="text-sm text-[var(--text-muted)]">Please provide your basic contact information to get started.</p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-1">
                     <label className="text-[10px] uppercase tracking-widest text-[var(--text-muted)] font-bold">Full Name *</label>
@@ -121,7 +121,7 @@ export default function RegisterNow() {
                 <h3 className="text-xl font-['expoSans'] font-semibold text-[var(--gold-dark)] mb-1">Step 2: Wedding Details</h3>
                 <p className="text-sm text-[var(--text-muted)]">Help us personalize your exhibition experience.</p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-1">
                     <label className="text-[10px] uppercase tracking-widest text-[var(--text-muted)] font-bold">When are you planning to marry? *</label>
@@ -168,7 +168,7 @@ export default function RegisterNow() {
     const renderVisitorStep3 = () => (
         <div className="animate-in fade-in slide-in-from-right-4 duration-500 text-center space-y-8 py-4">
             <h3 className="text-2xl font-['expoSans'] font-bold text-[var(--gold-dark)]">Congratulations! You are eligible for:</h3>
-            
+
             <div className="grid grid-cols-2 gap-4 text-left max-w-sm mx-auto">
                 <div className="p-4 bg-[var(--bg-offwhite)] border border-[var(--gold-light)] rounded-lg flex items-center gap-3 shadow-sm">
                     <span className="text-2xl">🎟</span>
@@ -187,7 +187,7 @@ export default function RegisterNow() {
                     <span className="text-sm font-bold text-[var(--text-main)]">Lucky Draw Entry</span>
                 </div>
             </div>
-            
+
             <p className="text-[var(--text-muted)] text-sm">Win a Honeymoon or Destination Wedding Deal!</p>
 
             <div className="flex gap-4 mt-8">
@@ -204,7 +204,7 @@ export default function RegisterNow() {
     const renderVisitorStep4 = () => (
         <div className="animate-in fade-in slide-in-from-right-4 duration-500 space-y-6">
             <h3 className="text-xl font-['expoSans'] font-semibold text-[var(--gold-dark)] mb-4">Step 4: Final Details</h3>
-            
+
             <div className="space-y-1">
                 <label className="text-[10px] uppercase tracking-widest text-[var(--text-muted)] font-bold">Why are you visiting? *</label>
                 <select name="visitIntent" onChange={handleVisitorChange} value={visitorData.visitIntent} required className="input-couture cursor-pointer bg-transparent">
@@ -261,7 +261,7 @@ export default function RegisterNow() {
                 <label className="text-[10px] uppercase tracking-widest text-[var(--text-muted)] font-bold">Company / Brand Name *</label>
                 <input name="companyName" onChange={handleExhibitorChange} value={exhibitorData.companyName} required className="input-couture" placeholder="Your Wedding Co." />
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-2">
                 <div className="space-y-1">
                     <label className="text-[10px] uppercase tracking-widest text-[var(--text-muted)] font-bold">Business Category *</label>
@@ -287,7 +287,7 @@ export default function RegisterNow() {
                     </select>
                 </div>
             </div>
-            
+
             <button type="button" onClick={nextStep} className="w-full mt-6 bg-[var(--text-main)] hover:bg-black text-white font-bold tracking-[0.2em] uppercase py-4 text-[12px] transition-all rounded-sm">
                 Next Step
             </button>
@@ -297,19 +297,18 @@ export default function RegisterNow() {
     const renderExhibitorStep2 = () => (
         <div className="animate-in fade-in slide-in-from-right-4 duration-500 space-y-6">
             <h3 className="text-xl font-['expoSans'] font-semibold text-[var(--gold-dark)] mb-4">Step 2: Space Requirement & Budget</h3>
-            
+
             <div className="space-y-4">
                 <label className="text-[10px] uppercase tracking-widest text-[var(--text-muted)] font-bold block mb-2">Space Requirement *</label>
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     {['12 sqm (Shell)', '21 sqm (Bare)', '36 sqm', '50+ sqm'].map((size) => (
-                        <div 
+                        <div
                             key={size}
-                            onClick={() => setExhibitorData({...exhibitorData, space: size})}
-                            className={`p-4 border rounded-lg cursor-pointer text-center transition-all ${
-                                exhibitorData.space === size 
-                                ? 'border-[var(--gold)] bg-[var(--gold)]/10 text-[var(--text-main)] shadow-sm' 
-                                : 'border-gray-200 hover:border-[var(--gold)]/50 text-[var(--text-muted)]'
-                            }`}
+                            onClick={() => setExhibitorData({ ...exhibitorData, space: size })}
+                            className={`p-4 border rounded-lg cursor-pointer text-center transition-all ${exhibitorData.space === size
+                                    ? 'border-[var(--gold)] bg-[var(--gold)]/10 text-[var(--text-main)] shadow-sm'
+                                    : 'border-gray-200 hover:border-[var(--gold)]/50 text-[var(--text-muted)]'
+                                }`}
                         >
                             <p className="text-sm font-bold font-['expoSans']">{size}</p>
                         </div>
@@ -321,19 +320,18 @@ export default function RegisterNow() {
                 <label className="text-[10px] uppercase tracking-widest text-[var(--text-muted)] font-bold block mb-2">Budget Range *</label>
                 <div className="grid grid-cols-2 gap-4">
                     {[
-                        {v: '3-5L', l: '₹3–5 Lakh'},
-                        {v: '5-10L', l: '₹5–10 Lakh'},
-                        {v: '10-25L', l: '₹10–25 Lakh'},
-                        {v: '25L+', l: '₹25L+ (Sponsorship)'}
+                        { v: '3-5L', l: '₹3–5 Lakh' },
+                        { v: '5-10L', l: '₹5–10 Lakh' },
+                        { v: '10-25L', l: '₹10–25 Lakh' },
+                        { v: '25L+', l: '₹25L+ (Sponsorship)' }
                     ].map((rng) => (
-                        <div 
+                        <div
                             key={rng.v}
-                            onClick={() => setExhibitorData({...exhibitorData, budget: rng.v})}
-                            className={`p-4 border rounded-lg cursor-pointer text-center transition-all ${
-                                exhibitorData.budget === rng.v 
-                                ? 'border-[var(--gold)] bg-[var(--gold)]/10 text-[var(--text-main)] shadow-sm' 
-                                : 'border-gray-200 hover:border-[var(--gold)]/50 text-[var(--text-muted)]'
-                            }`}
+                            onClick={() => setExhibitorData({ ...exhibitorData, budget: rng.v })}
+                            className={`p-4 border rounded-lg cursor-pointer text-center transition-all ${exhibitorData.budget === rng.v
+                                    ? 'border-[var(--gold)] bg-[var(--gold)]/10 text-[var(--text-main)] shadow-sm'
+                                    : 'border-gray-200 hover:border-[var(--gold)]/50 text-[var(--text-muted)]'
+                                }`}
                         >
                             <p className="text-sm font-bold font-['expoSans']">{rng.l}</p>
                         </div>
@@ -355,7 +353,7 @@ export default function RegisterNow() {
     const renderExhibitorStep3 = () => (
         <div className="animate-in fade-in slide-in-from-right-4 duration-500 space-y-6">
             <h3 className="text-xl font-['expoSans'] font-semibold text-[var(--gold-dark)] mb-4">Step 3: Outcome & Submission</h3>
-            
+
             <div className="space-y-1 pb-6 border-b border-gray-100">
                 <label className="text-[10px] uppercase tracking-widest text-[var(--text-muted)] font-bold">Primary Expected Outcome *</label>
                 <select name="outcome" onChange={handleExhibitorChange} value={exhibitorData.outcome} required className="input-couture cursor-pointer bg-transparent">
@@ -373,7 +371,7 @@ export default function RegisterNow() {
                 <div className="grid grid-cols-2 gap-4">
                     <button type="submit" className="flex flex-col items-center justify-center p-4 border border-[var(--gold-light)] bg-white hover:bg-[var(--gold)]/5 hover:border-[var(--gold)] transition-all rounded-lg gap-2 group">
                         <span className="text-2xl opacity-70 group-hover:opacity-100">📄</span>
-                        <span className="text-[11px] font-bold text-[var(--text-main)] uppercase tracking-wider">Download Map</span>
+                        <span className="text-[11px] font-bold text-[var(--text-main)] uppercase tracking-wider">Download Brochure</span>
                     </button>
                     <button type="submit" className="flex flex-col items-center justify-center p-4 border border-[var(--gold-light)] bg-white hover:bg-[var(--gold)]/5 hover:border-[var(--gold)] transition-all rounded-lg gap-2 group">
                         <span className="text-2xl opacity-70 group-hover:opacity-100">📞</span>
@@ -403,18 +401,18 @@ export default function RegisterNow() {
             <Head title="Register Now | Plan Your Visit & Exhibit" />
             <div className="min-h-screen flex flex-col bg-[var(--bg-offwhite)] text-[var(--text-main)] selection:bg-[var(--gold)] selection:text-white">
                 <Navbar />
-                
+
                 <main className="flex-grow relative flex flex-col items-center justify-start pt-5 pb-20 px-4 md:px-8">
                     {/* Background subtle styling */}
                     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                        <img 
-                            src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=1920" 
-                            alt="Wedding Background" 
+                        <img
+                            src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=1920"
+                            alt="Wedding Background"
                             className="w-full h-full object-cover opacity-10 grayscale"
                         />
                         <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-offwhite)] via-transparent to-[var(--bg-white)]" />
                     </div>
-                    
+
                     <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto w-full mb-8">
                         {step === 1 && (
                             <>
@@ -429,38 +427,36 @@ export default function RegisterNow() {
                                 </p>
                             </>
                         )}
-                        
+
                         {/* TOGGLE BUTTONS - Adjusted text per user instruction */}
                         {step === 1 && (
                             <div className="flex flex-col sm:flex-row gap-5 w-full md:w-fit px-4 md:px-0 mt-2">
-                                <Link 
+                                <Link
                                     href="/register-now?type=visitor"
                                     onClick={(e) => {
                                         e.preventDefault();
                                         handleTypeChange('visitor');
                                         window.history.pushState({}, '', '/register-now?type=visitor');
                                     }}
-                                    className={`px-6 md:px-8 py-4 font-bold uppercase tracking-[0.1em] text-[11px] md:text-[12px] rounded-sm border-2 transition-all duration-300 text-center w-full sm:w-auto ${
-                                        registrationType === 'visitor' 
-                                        ? 'bg-[var(--text-main)] text-white border-[var(--text-main)] shadow-lg scale-105' 
-                                        : 'bg-white text-[var(--text-main)] border-[var(--text-main)]/20 hover:border-[var(--text-main)] hover:bg-[var(--text-main)] hover:text-white'
-                                    }`}
+                                    className={`px-6 md:px-8 py-4 font-bold uppercase tracking-[0.1em] text-[11px] md:text-[12px] rounded-sm border-2 transition-all duration-300 text-center w-full sm:w-auto ${registrationType === 'visitor'
+                                            ? 'bg-[var(--text-main)] text-white border-[var(--text-main)] shadow-lg scale-105'
+                                            : 'bg-white text-[var(--text-main)] border-[var(--text-main)]/20 hover:border-[var(--text-main)] hover:bg-[var(--text-main)] hover:text-white'
+                                        }`}
                                 >
                                     💍 Plan Your Wedding Visit & Unlock Offers
                                     <span className="block text-[9px] opacity-70 mt-1 uppercase tracking-widest font-normal">(For Couples / Families / Visitors)</span>
                                 </Link>
-                                <Link 
+                                <Link
                                     href="/register-now?type=exhibitor"
                                     onClick={(e) => {
                                         e.preventDefault();
                                         handleTypeChange('exhibitor');
                                         window.history.pushState({}, '', '/register-now?type=exhibitor');
                                     }}
-                                    className={`px-6 md:px-8 py-4 font-bold uppercase tracking-[0.1em] text-[11px] md:text-[12px] rounded-sm border-2 transition-all duration-300 text-center w-full sm:w-auto ${
-                                        registrationType === 'exhibitor' 
-                                        ? 'bg-[var(--text-main)] text-white border-[var(--text-main)] shadow-lg scale-105' 
-                                        : 'bg-white text-[var(--text-main)] border-[var(--text-main)]/20 hover:border-[var(--text-main)] hover:bg-[var(--text-main)] hover:text-white'
-                                    }`}
+                                    className={`px-6 md:px-8 py-4 font-bold uppercase tracking-[0.1em] text-[11px] md:text-[12px] rounded-sm border-2 transition-all duration-300 text-center w-full sm:w-auto ${registrationType === 'exhibitor'
+                                            ? 'bg-[var(--text-main)] text-white border-[var(--text-main)] shadow-lg scale-105'
+                                            : 'bg-white text-[var(--text-main)] border-[var(--text-main)]/20 hover:border-[var(--text-main)] hover:bg-[var(--text-main)] hover:text-white'
+                                        }`}
                                 >
                                     🏢 Showcase Your Brand at India's Biggest Expo
                                     <span className="block text-[9px] opacity-70 mt-1 uppercase tracking-widest font-normal">(For Brands / Businesses / Exhibitors)</span>
@@ -472,7 +468,7 @@ export default function RegisterNow() {
                     {/* MULTI-STEP REGISTRATION FORM CONTAINER */}
                     <div className="relative z-10 w-full max-w-3xl editorial-card bg-white rounded-2xl p-8 md:p-12 animate-in fade-in slide-in-from-bottom-8 duration-700">
                         {renderProgressBar()}
-                        
+
                         <div className="mb-8 text-center flex justify-between items-center bg-[var(--bg-offwhite)] p-4 rounded-lg px-6">
                             <h2 className="text-xl font-['expoSans'] font-medium text-[var(--text-main)] relative inline-block">
                                 {registrationType === 'visitor' ? 'Visitor Funnel' : 'Exhibitor Funnel'}
@@ -483,7 +479,7 @@ export default function RegisterNow() {
                         </div>
 
                         <form onSubmit={finalSubmit}>
-                             {registrationType === 'visitor' && step === 1 && renderVisitorStep1()}
+                            {registrationType === 'visitor' && step === 1 && renderVisitorStep1()}
                             {registrationType === 'visitor' && step === 2 && renderVisitorStep2()}
                             {registrationType === 'visitor' && step === 3 && renderVisitorStep3()}
                             {registrationType === 'visitor' && step === 4 && renderVisitorStep4()}
@@ -494,7 +490,7 @@ export default function RegisterNow() {
                         </form>
                     </div>
                 </main>
-                
+
                 <Footer />
             </div>
         </>

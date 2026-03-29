@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
             <div className="relative z-10 h-full max-w-7xl mx-auto px-6 flex flex-col justify-center">
                 <div className="max-w-xl animate-in fade-in slide-in-from-left duration-1000">
                     <h2 className="text-[16px] md:text-[22px] font-normal text-white mb-1 font-['expoSans'] opacity-90">
-                      7-8-9 August 2026 | IICC Yashobhoomi, New Delhi
+                      7-9 August 2026 | IICC Yashobhoomi, New Delhi
                     </h2>
                     {/* <h2 className="text-[16px] md:text-[22px] font-normal text-white mb-6 font-['expoSans'] opacity-90">
                         welcoming the world!

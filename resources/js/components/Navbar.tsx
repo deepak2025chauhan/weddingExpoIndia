@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, X, Search } from 'lucide-react';
 import { Link } from '@inertiajs/react';
+import DownloadMapModal from './DownloadMapModal';
 
 interface NavbarProps {
     visible?: boolean;
@@ -8,7 +9,10 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
     const [mobileExhibitorsOpen, setMobileExhibitorsOpen] = useState(false);
+
+
     const [mobileVisitorsOpen, setMobileVisitorsOpen] = useState(false);
     const [mobileUnderstandingOpen, setMobileUnderstandingOpen] = useState(false);
     const [mobileExperiencesOpen, setMobileExperiencesOpen] = useState(false);
@@ -32,18 +36,18 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
         { label: "Art & Culture", href: "/experiences/arts-culture" },
         { label: "Entertainment", href: "/experiences/entertainment" },
         { label: "Food & Livelihoods", href: "/experiences/food-and-livelihoods" },
-        { label: "International Destination Pavilion", href: "/experiences/international-destination-pavillion" },
-        { label: "India Destination Pavilion", href: "/experiences/india-destination-pavillion" },
+        { label: "International Destination Pavilion", href: "/experiences/international-destination-pavilion" },
+        { label: "India Destination Pavilion", href: "/experiences/india-destination-pavilion" },
         { label: "Luxury Resort & Hotel Pavilion", href: "/experiences/luxury-resort-hotel-pavilion" },
         { label: "Cultural Wedding Showcase Arena", href: "/experiences/cultural-wedding-showcase-arena" },
-        { label: "Wedding Cuisine & Catering, Sweets", href: "/experiences/wedding-cuisine-catering-sweets-pavillion" },
+        { label: "Wedding Cuisine & Catering, Sweets", href: "/experiences/wedding-cuisine-catering-sweets-pavilion" },
         { label: "Honeymoon & Travel Zone", href: "/experiences/honeymoon-travel-zone" },
         { label: "Gifting & Showcase Area", href: "/experiences/gifting-showcase-area" },
     ];
 
     const weddingExhibitorLinks = [
         { label: "Exhibit With Us", href: "/register-now?type=exhibitor" },
-        { label: "Floor Plan & Pavilions", href: "#" },
+        { label: "Expo Map & Pavilions", href: "/floor-plan" },
         { label: "Sponsorship Opportunities", href: "#" },
         { label: "B2B Matchmaking", href: "#" },
         { label: "Exhibitor Directory", href: route('discover.exhibitors') },
@@ -81,11 +85,11 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                             <div className="h-6 w-px bg-gray-200" />
 
                             <span className="text-[13px] font-medium text-gray-800 tracking-wide">
-                                7 August 2026 – 9 August 2026
+                                7–9 August 2026
                             </span>
                             <div className="h-6 w-px bg-gray-200" />
-                            <a href="tel:+919999999999" className="text-[13px] font-bold text-black hover:text-[--gold] transition-colors">
-                                Call Us: +91 99999 99999
+                            <a href="tel:+919991856776" className="text-[13px] font-bold text-black hover:text-[--gold] transition-colors">
+                                Call Us: +91 99918 56776
                             </a>
                         </div>
 
@@ -169,13 +173,13 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                             </div>
                             <div className="relative group h-full flex items-center">
                                 <Link href="/floor-plan" className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[#ED8B00] transition-colors relative py-1">
-                                    Floor Plan
+                                    Expo Map
                                     <div className="absolute -bottom-4 left-0 w-0 h-[3px] bg-[#ED8B00] transition-all duration-200 group-hover:w-full" />
                                 </Link>
                             </div>
                             <div className="relative group h-full flex items-center">
-                                <Link href="/expo-map" className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[#ED8B00] transition-colors relative py-1">
-                                    Expo Map
+                                <Link href="/news" className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[#ED8B00] transition-colors relative py-1">
+                                    News
                                     <div className="absolute -bottom-4 left-0 w-0 h-[3px] bg-[#ED8B00] transition-all duration-200 group-hover:w-full" />
                                 </Link>
                             </div>
@@ -184,6 +188,12 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                         <div className="flex items-center gap-4">
                             <button className="p-2 hover:bg-gray-50 rounded-full transition-colors hidden md:block">
                                 <Search size={20} />
+                            </button>
+                            <button
+                                onClick={() => setIsDownloadModalOpen(true)}
+                                className="border-2 border-[--gold] text-[--gold] rounded-sm px-6 py-2 text-[14px] font-bold hover:bg-[--gold] hover:text-white transition-all hidden md:block"
+                            >
+                                Download Map
                             </button>
                             <Link
                                 href={route('discover.exhibitors')}
@@ -198,8 +208,8 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
 
             {/* Mobile Menu Overlay - Placed outside of nav to prevent translate-y transform clipping */}
             {isMobileMenuOpen && (
-                <div 
-                    className="fixed inset-0 z-[9999] flex flex-col overflow-hidden" 
+                <div
+                    className="fixed inset-0 z-[9999] flex flex-col overflow-hidden"
                     style={{ backgroundColor: '#ffffff', opacity: 1, visibility: 'visible' }}
                 >
                     {/* Header */}
@@ -207,7 +217,7 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                         <div className="w-[120px] h-auto relative">
                             <Link href="/">
                                 <img
-                                    src="/logo.svg"
+                                    src="/logo.png"
                                     alt="Logo"
                                     className="w-full"
                                 />
@@ -225,9 +235,9 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                     {/* Navigation Links */}
                     <div className="grow overflow-y-auto" style={{ backgroundColor: '#ffffff' }}>
                         <div className="flex flex-col">
-                            
+
                             <div className="border-b border-gray-100">
-                                <button 
+                                <button
                                     onClick={() => setMobileUnderstandingOpen(!mobileUnderstandingOpen)}
                                     className="w-full py-6 px-8 flex items-center justify-between text-[16px] font-bold text-black hover:text-[--gold] transition-colors"
                                 >
@@ -250,7 +260,7 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                                 )}
                             </div>
                             <div className="border-b border-gray-100">
-                                <button 
+                                <button
                                     onClick={() => setMobileExperiencesOpen(!mobileExperiencesOpen)}
                                     className="w-full py-6 px-8 flex items-center justify-between text-[16px] font-bold text-black hover:text-[--gold] transition-colors"
                                 >
@@ -271,6 +281,22 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                                         ))}
                                     </div>
                                 )}
+                            </div>
+                            <div className="border-b border-gray-100">
+                                <Link
+                                    href="/floor-plan"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="w-full py-6 px-8 block text-[16px] font-bold text-black hover:text-[--gold] transition-colors border-b border-gray-100"
+                                >
+                                    Expo Map
+                                </Link>
+                                <Link
+                                    href="/news"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="w-full py-6 px-8 block text-[16px] font-bold text-black hover:text-[--gold] transition-colors border-b border-gray-100"
+                                >
+                                    News
+                                </Link>
                             </div>
                         </div>
 
@@ -293,9 +319,25 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                                 Discover Destinations
                             </Link>
                         </div>
+                        <div className="p-8 pt-0">
+                            <button
+                                onClick={() => {
+                                    setIsMobileMenuOpen(false);
+                                    setIsDownloadModalOpen(true);
+                                }}
+                                className="block w-full border border-[--gold] rounded-[4px] py-[14px] text-[16px] font-bold text-center text-[--gold] hover:bg-[--gold] hover:text-white transition-all"
+                            >
+                                Download Map
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}
+
+            <DownloadMapModal
+                isOpen={isDownloadModalOpen}
+                onClose={() => setIsDownloadModalOpen(false)}
+            />
         </>
     );
 };

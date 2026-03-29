@@ -36,7 +36,10 @@ const SectionPage: React.FC<PageProps> = ({ title, description, image = "/placeh
         <div className="min-h-screen bg-white font-['expoSans',sans-serif]">
             <Head title={title} />
             
-            <LeadCaptureModal onSuccess={() => setIsUnlocked(true)} />
+            <LeadCaptureModal 
+                onSuccess={() => setIsUnlocked(true)} 
+                onClose={() => setIsUnlocked(true)} 
+            />
 
             <Navbar />
             

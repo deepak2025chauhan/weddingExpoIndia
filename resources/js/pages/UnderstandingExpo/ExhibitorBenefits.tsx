@@ -46,7 +46,10 @@ const ExhibitorBenefits = () => {
         <div className="min-h-screen bg-white font-['expoSans',sans-serif]">
             <Head title="Benefits as an Exhibitor" />
             
-            <LeadCaptureModal onSuccess={() => setIsUnlocked(true)} />
+            <LeadCaptureModal 
+                onSuccess={() => setIsUnlocked(true)} 
+                onClose={() => setIsUnlocked(true)} 
+            />
 
             <Navbar />
 
@@ -104,7 +107,7 @@ const ExhibitorBenefits = () => {
                                 Apply to Exhibit
                             </Link>
                             <Link href="/floor-plan" className="text-black font-bold text-[18px] border-b-2 border-black hover:pb-2 transition-all">
-                                View Floor Plan
+                                View Expo Map
                             </Link>
                         </div>
                     </div>

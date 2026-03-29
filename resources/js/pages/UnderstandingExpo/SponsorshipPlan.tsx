@@ -78,8 +78,8 @@ const sponsorshipTiers = [
 ];
 
 const categorySponsors = [
-    "Destination Partner", "Hospitality Partner", "Wedding Planning Partner", 
-    "Luxury Lifestyle Partner", "Jewellery Partner", "Apparel Partner", 
+    "Destination Partner", "Hospitality Partner", "Wedding Planning Partner",
+    "Luxury Lifestyle Partner", "Jewellery Partner", "Apparel Partner",
     "Beauty Partner", "Food & Catering Partner", "Travel & Tourism Partner"
 ];
 
@@ -100,215 +100,213 @@ const SponsorshipPlan = () => {
     return (
         <div className="min-h-screen bg-white font-['expoSans',sans-serif]">
             <Head title="Sponsorship Plan" />
-            <LeadCaptureModal onSuccess={() => setIsUnlocked(true)} />
+            <LeadCaptureModal 
+                onSuccess={() => setIsUnlocked(true)} 
+                onClose={() => setIsUnlocked(true)} 
+            />
             <Navbar />
 
             <div className={`${!isUnlocked ? 'blur-md pointer-events-none select-none' : 'transition-all duration-1000'}`}>
                 {/* Hero Section */}
                 <div className="bg-[#191919] text-white py-32 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-1/2 h-full opacity-10">
-                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1000" alt="" className="w-full h-full object-cover" />
+                    <div className="absolute top-0 right-0 w-1/2 h-full opacity-10">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1000" alt="" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="max-w-7xl mx-auto px-6 relative z-10">
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            className="max-w-3xl"
+                        >
+                            <h1 className="text-[56px] md:text-[72px] font-bold leading-tight mb-6">
+                                Sponsorship <span className="text-[--gold]">Opportunities</span>
+                            </h1>
+                            <p className="text-[18px] md:text-[22px] text-gray-300 leading-relaxed mb-10">
+                                Partner with India's most prestigious Wedding Expo and connect with high-net-worth individuals, global tourists, and industry leaders.
+                            </p>
+                            <div className="flex flex-wrap gap-4">
+                                <Link href="/register-now?type=partner" className="bg-white/10 backdrop-blur-md border border-white/20 px-10 py-4 rounded-sm font-bold text-[16px] hover:bg-white/20 transition-all">
+                                    Become a Partner
+                                </Link>
+                                <button className="bg-white/10 backdrop-blur-md border border-white/20 px-10 py-4 rounded-sm font-bold text-[16px] hover:bg-white/20 transition-all">
+                                    Download Brochure
+                                </button>
+                            </div>
+                        </motion.div>
+                    </div>
                 </div>
-                <div className="max-w-7xl mx-auto px-6 relative z-10">
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        className="max-w-3xl"
-                    >
-                        <h1 className="text-[56px] md:text-[72px] font-bold leading-tight mb-6">
-                            Sponsorship <span className="text-[--gold]">Opportunities</span>
-                        </h1>
-                        <p className="text-[18px] md:text-[22px] text-gray-300 leading-relaxed mb-10">
-                            Partner with India's most prestigious Wedding Expo and connect with high-net-worth individuals, global tourists, and industry leaders.
+
+                {/* Stats / ROI Section */}
+                <section className="py-20 bg-gray-50 border-b border-gray-100">
+                    <div className="max-w-7xl mx-auto px-6">
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+                            <div>
+                                <div className="text-[48px] font-bold text-[#191919] mb-1">50K+</div>
+                                <div className="text-[14px] text-gray-500 font-bold uppercase tracking-widest">Visitors</div>
+                            </div>
+                            <div>
+                                <div className="text-[48px] font-bold text-[#191919] mb-1">500+</div>
+                                <div className="text-[14px] text-gray-500 font-bold uppercase tracking-widest">Brands</div>
+                            </div>
+                            <div>
+                                <div className="text-[48px] font-bold text-[#191919] mb-1">100M+</div>
+                                <div className="text-[14px] text-gray-500 font-bold uppercase tracking-widest">Media Reach</div>
+                            </div>
+                            <div>
+                                <div className="text-[48px] font-bold text-[#191919] mb-1">20+</div>
+                                <div className="text-[14px] text-gray-500 font-bold uppercase tracking-widest">Countries</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Pricing Tiers */}
+                <section className="py-32">
+                    <div className="max-w-7xl mx-auto px-6">
+                        <div className="text-center mb-20">
+                            <h2 className="text-[42px] font-bold text-[#191919] mb-4">Sponsorship Tiers</h2>
+                            <p className="text-gray-500 text-[18px]">Select the tier that best fits your brand's vision and ROI goals.</p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {sponsorshipTiers.map((tier, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: idx * 0.1 }}
+                                    className={`flex flex-col bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all h-full ${idx === 0 ? 'ring-2 ring-[--gold]' : ''}`}
+                                >
+                                    <div className={`h-2 bg-gradient-to-r ${tier.color}`} />
+                                    <div className="p-8 flex-grow">
+                                        <div className="mb-6">{tier.icon}</div>
+                                        <h3 className="text-[20px] font-bold text-[#191919] mb-1">{tier.name}</h3>
+                                        <div className="text-[12px] font-bold text-gray-400 uppercase tracking-widest mb-4">{tier.type}</div>
+                                        <div className="text-[32px] font-bold text-black mb-6">{tier.price}</div>
+                                        <p className="text-[14px] text-gray-500 mb-8 italic">{tier.shortDesc}</p>
+
+                                        <h4 className="text-[14px] font-bold uppercase tracking-wider mb-4">Core Benefits:</h4>
+                                        <ul className="space-y-3 mb-8">
+                                            {tier.benefits.slice(0, 5).map((benefit, bIdx) => (
+                                                <li key={bIdx} className="flex items-start gap-3 text-[14px] text-gray-600 leading-tight">
+                                                    <Check size={16} className="text-green-500 flex-shrink-0 mt-0.5" />
+                                                    {benefit}
+                                                </li>
+                                            ))}
+                                            {tier.benefits.length > 5 && (
+                                                <li className="text-[13px] text-[--gold] font-bold">+ {tier.benefits.length - 5} more benefits</li>
+                                            )}
+                                        </ul>
+                                    </div>
+                                    <div className="p-6 bg-gray-50 mt-auto">
+                                        <button className="w-full bg-[#191919] text-white py-4 rounded-xl font-bold hover:bg-black transition-all">
+                                            Book Now
+                                        </button>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Category Sponsors */}
+                <section className="py-24 bg-[#191919] text-white">
+                    <div className="max-w-7xl mx-auto px-6">
+                        <h2 className="text-[36px] font-bold mb-16 text-center">Category-Based Sponsorships</h2>
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                            {categorySponsors.map((cat, idx) => (
+                                <div key={idx} className="p-6 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all text-center group cursor-pointer">
+                                    <Shield className="mx-auto mb-4 text-[--gold] group-hover:scale-110 transition-transform" />
+                                    <div className="text-[14px] font-bold tracking-wide">{cat}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Experience Sponsors */}
+                <section className="py-32 bg-white">
+                    <div className="max-w-7xl mx-auto px-6">
+                        <div className="flex flex-col lg:flex-row gap-20 items-center">
+                            <div className="lg:w-1/2">
+                                <h2 className="text-[42px] font-bold text-[#191919] mb-6">Experience-Based Sponsorship</h2>
+                                <p className="text-[#555555] text-[18px] mb-8 leading-relaxed">
+                                    These feel premium and help brands visualize ROI. Position your brand exactly where the action is.
+                                </p>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    {experienceSponsors.map((exp, idx) => (
+                                        <div key={idx} className="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100 group hover:border-[--gold] transition-all">
+                                            <span className="font-bold text-[15px]">{exp.name}</span>
+                                            <span className="bg-black text-white text-[12px] px-3 py-1 rounded-full">{exp.price}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="lg:w-1/2 relative">
+                                <div className="aspect-square rounded-full bg-[--gold]/10 absolute -inset-10 animate-pulse" />
+                                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+                                    <img src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&fit=crop&q=80&w=1000" alt="Experience" className="w-full h-full object-cover" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                                    <div className="absolute bottom-10 left-10">
+                                        <h3 className="text-white text-[24px] font-bold mb-2">Engage directly with your target audience</h3>
+                                        <p className="text-gray-200">Our unique experience zones ensure maximum brand interaction.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Strategy / Pitch */}
+                <section className="py-24 bg-gray-50">
+                    <div className="max-w-5xl mx-auto px-6">
+                        <div className="bg-white p-12 rounded-[40px] shadow-xl border border-gray-100 flex flex-col md:flex-row gap-12 items-center">
+                            <div className="md:w-1/3">
+                                <div className="w-24 h-24 bg-[--gold]/20 rounded-full flex items-center justify-center mb-6">
+                                    <Target size={40} className="text-[--gold]" />
+                                </div>
+                                <h3 className="text-[28px] font-bold">Don't just sell price — sell positioning</h3>
+                            </div>
+                            <div className="md:w-2/3 space-y-4">
+                                <div className="flex gap-4 p-4 rounded-xl hover:bg-gray-50 transition-all border border-transparent hover:border-gray-100">
+                                    <div className="font-bold text-[--gold]">₹25L</div>
+                                    <div><span className="font-bold">“Own the entire pavilion”</span> + premium branding across all touchpoints.</div>
+                                </div>
+                                <div className="flex gap-4 p-4 rounded-xl hover:bg-gray-50 transition-all border border-transparent hover:border-gray-100">
+                                    <div className="font-bold text-[--gold]">₹10L</div>
+                                    <div><span className="font-bold">“High visibility”</span> + category leadership among elite brands.</div>
+                                </div>
+                                <div className="flex gap-4 p-4 rounded-xl hover:bg-gray-50 transition-all border border-transparent hover:border-gray-100">
+                                    <div className="font-bold text-[--gold]">₹5L</div>
+                                    <div><span className="font-bold">“Strong presence”</span> + access to a highly targeted audience.</div>
+                                </div>
+                                <div className="flex gap-4 p-4 rounded-xl hover:bg-gray-50 transition-all border border-transparent hover:border-gray-100">
+                                    <div className="font-bold text-[--gold]">₹3L</div>
+                                    <div><span className="font-bold">“Affordable entry”</span> into India's most premium wedding expo.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* CTA Final */}
+                <section className="py-32 text-center">
+                    <div className="max-w-7xl mx-auto px-6">
+                        <h2 className="text-[48px] font-bold mb-8">Ready to Scale Your Brand?</h2>
+                        <p className="text-[#555555] text-[18px] mb-12 max-w-2xl mx-auto">
+                            Join us at Yashobhoomi and be part of an unprecedented celebration of the Indian wedding industry.
                         </p>
-                        <div className="flex flex-wrap gap-4">
-                            <Link href="/register-now?type=partner" className="bg-white/10 backdrop-blur-md border border-white/20 px-10 py-4 rounded-sm font-bold text-[16px] hover:bg-white/20 transition-all">
-                                Become a Partner
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                            <Link href="/register-now?type=partner" className="bg-black text-white px-12 py-5 rounded-sm font-bold text-[18px] hover:bg-[#191919] transition-all">
+                                Partner With Us
                             </Link>
-                            <a 
-                                href="/map.pdf" 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="bg-white/10 backdrop-blur-md border border-white/20 px-10 py-4 rounded-sm font-bold text-[16px] hover:bg-white/20 transition-all inline-block"
-                            >
-                                Download Map
+                            <a href="mailto:partners@weddingindiaexpo.com" className="text-black font-bold text-[18px] flex items-center gap-2 hover:gap-4 transition-all">
+                                Talk to our team <Globe size={20} />
                             </a>
                         </div>
-                    </motion.div>
-                </div>
-            </div>
-
-            {/* Stats / ROI Section */}
-            <section className="py-20 bg-gray-50 border-b border-gray-100">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
-                        <div>
-                            <div className="text-[48px] font-bold text-[#191919] mb-1">50K+</div>
-                            <div className="text-[14px] text-gray-500 font-bold uppercase tracking-widest">Visitors</div>
-                        </div>
-                        <div>
-                            <div className="text-[48px] font-bold text-[#191919] mb-1">500+</div>
-                            <div className="text-[14px] text-gray-500 font-bold uppercase tracking-widest">Brands</div>
-                        </div>
-                        <div>
-                            <div className="text-[48px] font-bold text-[#191919] mb-1">100M+</div>
-                            <div className="text-[14px] text-gray-500 font-bold uppercase tracking-widest">Media Reach</div>
-                        </div>
-                        <div>
-                            <div className="text-[48px] font-bold text-[#191919] mb-1">20+</div>
-                            <div className="text-[14px] text-gray-500 font-bold uppercase tracking-widest">Countries</div>
-                        </div>
                     </div>
-                </div>
-            </section>
-
-            {/* Pricing Tiers */}
-            <section className="py-32">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="text-center mb-20">
-                        <h2 className="text-[42px] font-bold text-[#191919] mb-4">Sponsorship Tiers</h2>
-                        <p className="text-gray-500 text-[18px]">Select the tier that best fits your brand's vision and ROI goals.</p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {sponsorshipTiers.map((tier, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
-                                className={`flex flex-col bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all h-full ${idx === 0 ? 'ring-2 ring-[--gold]' : ''}`}
-                            >
-                                <div className={`h-2 bg-gradient-to-r ${tier.color}`} />
-                                <div className="p-8 flex-grow">
-                                    <div className="mb-6">{tier.icon}</div>
-                                    <h3 className="text-[20px] font-bold text-[#191919] mb-1">{tier.name}</h3>
-                                    <div className="text-[12px] font-bold text-gray-400 uppercase tracking-widest mb-4">{tier.type}</div>
-                                    <div className="text-[32px] font-bold text-black mb-6">{tier.price}</div>
-                                    <p className="text-[14px] text-gray-500 mb-8 italic">{tier.shortDesc}</p>
-                                    
-                                    <h4 className="text-[14px] font-bold uppercase tracking-wider mb-4">Core Benefits:</h4>
-                                    <ul className="space-y-3 mb-8">
-                                        {tier.benefits.slice(0, 5).map((benefit, bIdx) => (
-                                            <li key={bIdx} className="flex items-start gap-3 text-[14px] text-gray-600 leading-tight">
-                                                <Check size={16} className="text-green-500 flex-shrink-0 mt-0.5" />
-                                                {benefit}
-                                            </li>
-                                        ))}
-                                        {tier.benefits.length > 5 && (
-                                            <li className="text-[13px] text-[--gold] font-bold">+ {tier.benefits.length - 5} more benefits</li>
-                                        )}
-                                    </ul>
-                                </div>
-                                <div className="p-6 bg-gray-50 mt-auto">
-                                    <button className="w-full bg-[#191919] text-white py-4 rounded-xl font-bold hover:bg-black transition-all">
-                                        Book Now
-                                    </button>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Category Sponsors */}
-            <section className="py-24 bg-[#191919] text-white">
-                <div className="max-w-7xl mx-auto px-6">
-                    <h2 className="text-[36px] font-bold mb-16 text-center">Category-Based Sponsorships</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                        {categorySponsors.map((cat, idx) => (
-                            <div key={idx} className="p-6 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all text-center group cursor-pointer">
-                                <Shield className="mx-auto mb-4 text-[--gold] group-hover:scale-110 transition-transform" />
-                                <div className="text-[14px] font-bold tracking-wide">{cat}</div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Experience Sponsors */}
-            <section className="py-32 bg-white">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="flex flex-col lg:flex-row gap-20 items-center">
-                        <div className="lg:w-1/2">
-                            <h2 className="text-[42px] font-bold text-[#191919] mb-6">Experience-Based Sponsorship</h2>
-                            <p className="text-[#555555] text-[18px] mb-8 leading-relaxed">
-                                These feel premium and help brands visualize ROI. Position your brand exactly where the action is.
-                            </p>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                {experienceSponsors.map((exp, idx) => (
-                                    <div key={idx} className="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100 group hover:border-[--gold] transition-all">
-                                        <span className="font-bold text-[15px]">{exp.name}</span>
-                                        <span className="bg-black text-white text-[12px] px-3 py-1 rounded-full">{exp.price}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        <div className="lg:w-1/2 relative">
-                            <div className="aspect-square rounded-full bg-[--gold]/10 absolute -inset-10 animate-pulse" />
-                            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-                                <img src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&fit=crop&q=80&w=1000" alt="Experience" className="w-full h-full object-cover" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                                <div className="absolute bottom-10 left-10">
-                                    <h3 className="text-white text-[24px] font-bold mb-2">Engage directly with your target audience</h3>
-                                    <p className="text-gray-200">Our unique experience zones ensure maximum brand interaction.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Strategy / Pitch */}
-            <section className="py-24 bg-gray-50">
-                <div className="max-w-5xl mx-auto px-6">
-                    <div className="bg-white p-12 rounded-[40px] shadow-xl border border-gray-100 flex flex-col md:flex-row gap-12 items-center">
-                        <div className="md:w-1/3">
-                            <div className="w-24 h-24 bg-[--gold]/20 rounded-full flex items-center justify-center mb-6">
-                                <Target size={40} className="text-[--gold]" />
-                            </div>
-                            <h3 className="text-[28px] font-bold">Don't just sell price — sell positioning</h3>
-                        </div>
-                        <div className="md:w-2/3 space-y-4">
-                            <div className="flex gap-4 p-4 rounded-xl hover:bg-gray-50 transition-all border border-transparent hover:border-gray-100">
-                                <div className="font-bold text-[--gold]">₹25L</div>
-                                <div><span className="font-bold">“Own the entire pavilion”</span> + premium branding across all touchpoints.</div>
-                            </div>
-                            <div className="flex gap-4 p-4 rounded-xl hover:bg-gray-50 transition-all border border-transparent hover:border-gray-100">
-                                <div className="font-bold text-[--gold]">₹10L</div>
-                                <div><span className="font-bold">“High visibility”</span> + category leadership among elite brands.</div>
-                            </div>
-                            <div className="flex gap-4 p-4 rounded-xl hover:bg-gray-50 transition-all border border-transparent hover:border-gray-100">
-                                <div className="font-bold text-[--gold]">₹5L</div>
-                                <div><span className="font-bold">“Strong presence”</span> + access to a highly targeted audience.</div>
-                            </div>
-                            <div className="flex gap-4 p-4 rounded-xl hover:bg-gray-50 transition-all border border-transparent hover:border-gray-100">
-                                <div className="font-bold text-[--gold]">₹3L</div>
-                                <div><span className="font-bold">“Affordable entry”</span> into India's most premium wedding expo.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA Final */}
-            <section className="py-32 text-center">
-                <div className="max-w-7xl mx-auto px-6">
-                    <h2 className="text-[48px] font-bold mb-8">Ready to Scale Your Brand?</h2>
-                    <p className="text-[#555555] text-[18px] mb-12 max-w-2xl mx-auto">
-                        Join us at Yashobhoomi and be part of an unprecedented celebration of the Indian wedding industry.
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                        <Link href="/register-now?type=partner" className="bg-black text-white px-12 py-5 rounded-sm font-bold text-[18px] hover:bg-[#191919] transition-all">
-                            Partner With Us
-                        </Link>
-                        <a href="mailto:partners@weddingindiaexpo.com" className="text-black font-bold text-[18px] flex items-center gap-2 hover:gap-4 transition-all">
-                            Talk to our team <Globe size={20} />
-                        </a>
-                    </div>
-                </div>
-            </section>
+                </section>
 
             </div>
             <Footer />

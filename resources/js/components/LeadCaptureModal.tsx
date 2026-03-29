@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { CheckCircle2, ArrowRight, X } from 'lucide-react';
 
 interface LeadCaptureModalProps {
     onSuccess: () => void;
+    onClose?: () => void;
 }
 
-const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ onSuccess }) => {
+const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ onSuccess, onClose }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
@@ -25,6 +26,11 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ onSuccess }) => {
             setIsOpen(true);
         }
     }, [onSuccess]);
+
+    const handleClose = () => {
+        setIsOpen(false);
+        if (onClose) onClose();
+    };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -50,7 +56,8 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ onSuccess }) => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="absolute inset-0 bg-black/40 backdrop-blur-xs"
+                        onClick={handleClose}
+                        className="absolute inset-0 bg-black/40 backdrop-blur-xs cursor-pointer"
                     />
 
                     <motion.div
@@ -59,6 +66,14 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ onSuccess }) => {
                         exit={{ opacity: 0, scale: 0.95, y: 10 }}
                         className="relative w-full max-w-4xl bg-white rounded-[4px] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] flex flex-col md:flex-row h-auto min-h-[450px] font-['expoSans',sans-serif]"
                     >
+                        {/* Close Button */}
+                        <button 
+                            onClick={handleClose}
+                            className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/10 hover:bg-gray-100 text-gray-500 transition-all md:text-gray-400"
+                        >
+                            <X size={24} />
+                        </button>
+
                         {/* Left Side: Visual/Branding */}
                         <div className="hidden md:block w-[40%] bg-[#191919] relative overflow-hidden">
                             <img 
