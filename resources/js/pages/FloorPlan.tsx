@@ -254,10 +254,15 @@ const FloorPlan = () => {
                                         Thank you for your interest. Your floor plan download should start automatically within a few seconds.
                                     </p>
                                     <div className="space-y-4">
-                                        <button className="w-full bg-[--gold] text-black py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all">
+                                        <a 
+                                            href="/map.pdf" 
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="w-full bg-[--gold] text-black py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all"
+                                        >
                                             <Download size={20} />
                                             Manual Download
-                                        </button>
+                                        </a>
                                         <p className="text-[13px] text-gray-400">If the download hasn't started, click the button above.</p>
                                     </div>
                                 </motion.div>

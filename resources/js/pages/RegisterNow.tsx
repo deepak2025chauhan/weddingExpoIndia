@@ -373,7 +373,7 @@ export default function RegisterNow() {
                 <div className="grid grid-cols-2 gap-4">
                     <button type="submit" className="flex flex-col items-center justify-center p-4 border border-[var(--gold-light)] bg-white hover:bg-[var(--gold)]/5 hover:border-[var(--gold)] transition-all rounded-lg gap-2 group">
                         <span className="text-2xl opacity-70 group-hover:opacity-100">📄</span>
-                        <span className="text-[11px] font-bold text-[var(--text-main)] uppercase tracking-wider">Download Brochure</span>
+                        <span className="text-[11px] font-bold text-[var(--text-main)] uppercase tracking-wider">Download Map</span>
                     </button>
                     <button type="submit" className="flex flex-col items-center justify-center p-4 border border-[var(--gold-light)] bg-white hover:bg-[var(--gold)]/5 hover:border-[var(--gold)] transition-all rounded-lg gap-2 group">
                         <span className="text-2xl opacity-70 group-hover:opacity-100">📞</span>

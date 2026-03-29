@@ -36,7 +36,7 @@ const StatItem: React.FC<StatItemProps> = ({ number, label, suffix = "" }) => {
 
     return (
         <div ref={ref} className="flex flex-col items-center text-center px-4">
-            <div className="text-[28px] md:text-[42px] font-bold text-white mb-2 font-['expoSans']">
+            <div className="text-[28px] md:text-[42px] font-bold text-white mb-2 font-['expoSans'] whitespace-nowrap">
                 {count}{suffix}
             </div>
             <div className="text-[13px] md:text-[16px] text-white/80 font-normal font-['expoSans'] leading-tight max-w-[160px]">
@@ -52,7 +52,7 @@ const StatsSection: React.FC = () => {
     const stats = [
         { number: "75", label: "Indian wedding industry size", suffix: "B+" },
         { number: "25", label: "Annual growth in destination weddings", suffix: "%" },
-        { number: "6000", label: "Premium exhibition space", suffix: "sqm" },
+        { number: "6000", label: "Premium exhibition space", suffix: " sqm" },
         { number: "150", label: "Curated luxury exhibitors", suffix: "+" },
         { number: "150", label: "High-intent wedding buyers & professionals", suffix: "+" },
     ];

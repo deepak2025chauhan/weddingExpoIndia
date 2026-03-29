@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Head, Link } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
@@ -47,9 +47,14 @@ const ExpoMap = () => {
                         <p className="text-gray-600 text-[18px] mb-8 leading-relaxed">
                             With over 190 pavilions to discover, the map is your best tool to find every destination, experience zone, and food hub at the expo.
                         </p>
-                        <Link href="/floor-plan" className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 rounded-sm font-bold hover:gap-4 transition-all uppercase tracking-widest text-[13px]">
+                        <a 
+                            href="/map.pdf" 
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 rounded-sm font-bold hover:gap-4 transition-all uppercase tracking-widest text-[13px]"
+                        >
                             Download PDF Map <Navigation size={16} />
-                        </Link>
+                        </a>
                     </div>
              
                 </div>

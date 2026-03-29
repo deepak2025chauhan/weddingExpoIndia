@@ -141,14 +141,19 @@ const Exhibitors = () => {
                                 </p>
                             </div>
                             <div className="hidden md:block">
-                                <button className="flex items-center gap-2 border-2 border-[#A38D56] text-[#A38D56] px-6 py-3 rounded-sm font-bold text-[14px] hover:bg-[#A38D56] hover:text-white transition-all uppercase tracking-wider">
-                                    Download Brochure
+                                <a 
+                                    href="/map.pdf" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 border-2 border-[#A38D56] text-[#A38D56] px-6 py-3 rounded-sm font-bold text-[14px] hover:bg-[#A38D56] hover:text-white transition-all uppercase tracking-wider"
+                                >
+                                    Download Map
                                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                                         <polyline points="15 3 21 3 21 9" />
                                         <line x1="10" y1="14" x2="21" y2="3" />
                                     </svg>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>

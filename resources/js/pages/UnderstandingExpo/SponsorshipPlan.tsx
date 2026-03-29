@@ -125,9 +125,14 @@ const SponsorshipPlan = () => {
                             <Link href="/register-now?type=partner" className="bg-white/10 backdrop-blur-md border border-white/20 px-10 py-4 rounded-sm font-bold text-[16px] hover:bg-white/20 transition-all">
                                 Become a Partner
                             </Link>
-                            <button className="bg-white/10 backdrop-blur-md border border-white/20 px-10 py-4 rounded-sm font-bold text-[16px] hover:bg-white/20 transition-all">
-                                Download Brochure
-                            </button>
+                            <a 
+                                href="/map.pdf" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="bg-white/10 backdrop-blur-md border border-white/20 px-10 py-4 rounded-sm font-bold text-[16px] hover:bg-white/20 transition-all inline-block"
+                            >
+                                Download Map
+                            </a>
                         </div>
                     </motion.div>
                 </div>
