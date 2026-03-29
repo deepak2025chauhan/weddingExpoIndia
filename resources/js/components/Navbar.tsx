@@ -14,27 +14,31 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
     const [mobileExperiencesOpen, setMobileExperiencesOpen] = useState(false);
 
     const understandingExpoLinks = [
-        { label: "Participants", href: "/understanding-expo/participants" },
-        { label: "Sustainability District", href: "/understanding-expo/sustainability-district" },
-        { label: "Mobility District", href: "/understanding-expo/mobility-district" },
-        { label: "Opportunity District", href: "/understanding-expo/opportunity-district" },
-        { label: "Programme for People and Planet", href: "/understanding-expo/programme-for-people-and-planet" },
+        { label: "Benefits as an Exhibitor", href: "/understanding-expo/participants/benefits" },
+        { label: "Exhibitor Application", href: "/understanding-expo/participants/application" },
+        { label: "Individual Participation", href: "/understanding-expo/opportunity-district/individual-participation" },
+        { label: "Request Free Stand Area", href: "/understanding-expo/opportunity-district/request-free-stand" },
+        { label: "New Product Showcase", href: "/understanding-expo/opportunity-district/new-product-showcase" },
         { label: "Expo Initiatives", href: "/understanding-expo/expo-initiatives" },
-        { label: "World Expos' history", href: "/understanding-expo/world-expos-history" },
-        { label: "After Expo 2020", href: "/understanding-expo/after-expo-2020" },
+        { label: "Sponsorship Plan", href: "/understanding-expo/sponsorship-plan" },
+        { label: "Speaker Section", href: "/understanding-expo/sponsorship-plan/speaker-section" },
+        { label: "Exhibitor & Visitor Profile", href: "/understanding-expo/sponsorship-plan/profiles" },
+        { label: "Blog Page", href: "/understanding-expo/sponsorship-plan/blog" },
+        { label: "Why Visit", href: "/understanding-expo/sponsorship-plan/why-visit" },
     ];
 
     const experiencesLinks = [
-        { label: "UAE Golden Jubilee", href: "/experiences/uae-golden-jubilee" },
         { label: "Theme Weeks", href: "/experiences/theme-weeks" },
-        { label: "Innovation & technology", href: "/experiences/innovation-and-technology" },
+        { label: "Art & Culture", href: "/experiences/arts-culture" },
         { label: "Entertainment", href: "/experiences/entertainment" },
-        { label: "Arts & culture", href: "/experiences/arts-culture" },
-        { label: "Food & livelihoods", href: "/experiences/food-and-livelihoods" },
-        { label: "Sports, fitness & wellbeing", href: "/experiences/sports-fitness-wellbeing" },
-        { label: "Architecture", href: "/experiences/architecture" },
-        { label: "Business & entrepreneurship", href: "/experiences/business-entrepreneurship" },
-        { label: "Education programmes", href: "/experiences/education-programmes" },
+        { label: "Food & Livelihoods", href: "/experiences/food-and-livelihoods" },
+        { label: "International Destination Pavilion", href: "/experiences/international-destination-pavillion" },
+        { label: "India Destination Pavilion", href: "/experiences/india-destination-pavillion" },
+        { label: "Luxury Resort & Hotel Pavilion", href: "/experiences/luxury-resort-hotel-pavilion" },
+        { label: "Cultural Wedding Showcase Arena", href: "/experiences/cultural-wedding-showcase-arena" },
+        { label: "Wedding Cuisine & Catering, Sweets", href: "/experiences/wedding-cuisine-catering-sweets-pavillion" },
+        { label: "Honeymoon & Travel Zone", href: "/experiences/honeymoon-travel-zone" },
+        { label: "Gifting & Showcase Area", href: "/experiences/gifting-showcase-area" },
     ];
 
     const weddingExhibitorLinks = [
@@ -77,8 +81,12 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                             <div className="h-6 w-px bg-gray-200" />
 
                             <span className="text-[13px] font-medium text-gray-800 tracking-wide">
-                                1 October 2021 – 31 March 2022
+                                7 August 2026 – 9 August 2026
                             </span>
+                            <div className="h-6 w-px bg-gray-200" />
+                            <a href="tel:+919999999999" className="text-[13px] font-bold text-black hover:text-[--gold] transition-colors">
+                                Call Us: +91 99999 99999
+                            </a>
                         </div>
 
                         <div className="flex items-center gap-6">
@@ -115,11 +123,13 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                             </button>
                         </div>
                         {/* Desktop Links */}
-                        <div className="hidden md:flex items-center gap-10">
-                            <div className="relative group py-2">
-                                <button className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[--gold] transition-colors">
+                        <div className="hidden md:flex items-center gap-10 h-full">
+                            <div className="relative group h-full flex items-center">
+                                <button className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[#ED8B00] transition-colors relative py-1">
                                     Understanding
                                     <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180" />
+                                    {/* Animated Line */}
+                                    <div className="absolute -bottom-4 left-0 w-0 h-[3px] bg-[#ED8B00] transition-all duration-200 group-hover:w-full" />
                                 </button>
 
                                 {/* Dropdown Menu */}
@@ -128,7 +138,7 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                                         <Link
                                             key={idx}
                                             href={link.href}
-                                            className="block px-8 py-3 text-[14px] font-medium text-gray-800 hover:bg-gray-50 hover:text-[--gold] transition-colors"
+                                            className="block px-8 py-3 text-[14px] font-medium text-gray-800 hover:bg-gray-50 hover:text-[#ED8B00] transition-colors"
                                         >
                                             {link.label}
                                         </Link>
@@ -136,10 +146,12 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                                 </div>
                             </div>
 
-                            <div className="relative group py-2">
-                                <button className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[--gold] transition-colors">
+                            <div className="relative group h-full flex items-center">
+                                <button className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[#ED8B00] transition-colors relative py-1">
                                     Experiences
                                     <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180" />
+                                    {/* Animated Line */}
+                                    <div className="absolute -bottom-4 left-0 w-0 h-[3px] bg-[#ED8B00] transition-all duration-200 group-hover:w-full" />
                                 </button>
 
                                 {/* Dropdown Menu */}
@@ -148,12 +160,24 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                                         <Link
                                             key={idx}
                                             href={link.href}
-                                            className="block px-8 py-3 text-[14px] font-medium text-gray-800 hover:bg-gray-50 hover:text-[--gold] transition-colors"
+                                            className="block px-8 py-3 text-[14px] font-medium text-gray-800 hover:bg-gray-50 hover:text-[#ED8B00] transition-colors"
                                         >
                                             {link.label}
                                         </Link>
                                     ))}
                                 </div>
+                            </div>
+                            <div className="relative group h-full flex items-center">
+                                <Link href="/floor-plan" className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[#ED8B00] transition-colors relative py-1">
+                                    Floor Plan
+                                    <div className="absolute -bottom-4 left-0 w-0 h-[3px] bg-[#ED8B00] transition-all duration-200 group-hover:w-full" />
+                                </Link>
+                            </div>
+                            <div className="relative group h-full flex items-center">
+                                <Link href="/expo-map" className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[#ED8B00] transition-colors relative py-1">
+                                    Expo Map
+                                    <div className="absolute -bottom-4 left-0 w-0 h-[3px] bg-[#ED8B00] transition-all duration-200 group-hover:w-full" />
+                                </Link>
                             </div>
                         </div>
 
@@ -165,7 +189,7 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                                 href={route('discover.exhibitors')}
                                 className="border-2 border-black rounded-sm px-6 py-2 text-[14px] font-bold hover:bg-black hover:text-white transition-all hidden md:block"
                             >
-                                Discover all exhibitors
+                                Discover Destinations
                             </Link>
                         </div>
                     </div>
@@ -266,7 +290,7 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className="block w-full border border-black rounded-[4px] py-[14px] text-[16px] font-bold text-center text-black hover:bg-black hover:text-white transition-all"
                             >
-                                Discover all countries
+                                Discover Destinations
                             </Link>
                         </div>
                     </div>

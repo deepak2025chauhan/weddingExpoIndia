@@ -77,13 +77,10 @@ const StatsSection: React.FC = () => {
     } as any;
 
     return (
-        <section ref={containerRef} className="relative mt-24 md:mt-20 w-full h-screen min-h-[600px] md:min-h-[700px] overflow-hidden bg-black flex items-center">
+        <section ref={containerRef} className="relative mt-24 md:mt-20 w-full h-auto py-20 md:py-32 min-h-[600px] md:min-h-[700px] bg-black flex items-center">
             <div 
                 className="absolute inset-0 z-0 bg-cover bg-center"
-                style={{ 
-                    backgroundImage: `url('https://www.expo2020dubai.com/-/media/expo2020/2021/home/zoom/expo-site_dark_compressed_1.jpg')`,
-                    transform: 'scale(1.05)' 
-                }}
+                
             />
 
             <div className="c-video-intro__overlay w-full! opacity-40!" />

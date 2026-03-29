@@ -1,0 +1,30 @@
+import React from 'react';
+import SectionPageLayout from '@/components/SectionPageTemplate';
+
+const IndiaPavilion = () => {
+    const features = [
+        {
+            title: "Royal Rajasthan",
+            description: "Experience the grandeur of palace weddings and the rich heritage of India's most vibrant state.",
+        },
+        {
+            title: "God's Own Country",
+            description: "Discover serene backwater weddings and the tropical beauty of Kerala's lush landscapes.",
+        },
+        {
+            title: "Modern Metro Hubs",
+            description: "From Goa's beaches to Mumbai's luxury hotels, explore the diverse wedding venues India has to offer.",
+        }
+    ];
+
+    return (
+        <SectionPageLayout 
+            title="India Destination Pavilion" 
+            description="Celebrate the soul of India. Discover the legendary heritage and breathtaking wedding destinations across all Indian states."
+            image="https://images.unsplash.com/photo-1524492707947-2f851be461bb?auto=format&fit=crop&q=80&w=1920"
+            features={features}
+        />
+    );
+};
+
+export default IndiaPavilion;

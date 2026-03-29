@@ -1,0 +1,30 @@
+import React from 'react';
+import SectionPageLayout from '@/components/SectionPageTemplate';
+
+const WeddingCuisine = () => {
+    const features = [
+        {
+            title: "Gourmet Tastings",
+            description: "Sample exquisite wedding menus designed by celebrity chefs and world-class catering brands.",
+        },
+        {
+            title: "Sweets & Desserts",
+            description: "A dedicated zone for India's finest traditional sweets and modern luxury confectioneries.",
+        },
+        {
+            title: "Catering Innovation",
+            description: "Discover new food presentation styles and live kitchen concepts for modern millennial weddings.",
+        }
+    ];
+
+    return (
+        <SectionPageLayout 
+            title="Wedding Cuisine & Catering Pavilion" 
+            description="A culinary journey like no other. Discover the finest flavors and catering innovations that will define the weddings of 2025."
+            image="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=1920"
+            features={features}
+        />
+    );
+};
+
+export default WeddingCuisine;

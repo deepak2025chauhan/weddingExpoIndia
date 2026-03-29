@@ -1,0 +1,30 @@
+import React from 'react';
+import SectionPageLayout from '@/components/SectionPageTemplate';
+
+const CulturalWedding = () => {
+    const features = [
+        {
+            title: "Live Traditions",
+            description: "Witness authentic wedding ceremonies performed by professional troupes from across India.",
+        },
+        {
+            title: "Art & Decor",
+            description: "Explore the intricate artistry of traditional wedding decorations, from floral arrangements to hand-painted backdrops.",
+        },
+        {
+            title: "Heritage Storytelling",
+            description: "Educational sessions on the significance of various rituals and how they are evolving in the modern era.",
+        }
+    ];
+
+    return (
+        <SectionPageLayout 
+            title="Cultural Wedding Showcase Arena" 
+            description="The beating heart of the expo. Experience the colors, music, and soul of diverse wedding cultures from around the world."
+            image="https://images.unsplash.com/photo-1544006659-f0b21f04cb1d?auto=format&fit=crop&q=80&w=1920"
+            features={features}
+        />
+    );
+};
+
+export default CulturalWedding;
