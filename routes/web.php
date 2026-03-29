@@ -184,6 +184,10 @@ Route::prefix('footer')->group(function () {
     Route::get('/worker-welfare', function () {
         return Inertia::render('Footer/WorkerWelfare');
     })->name('footer.worker');
+
+    Route::get('/sitemap', function () {
+        return Inertia::render('Sitemap');
+    })->name('footer.sitemap');
 });
 
 Route::prefix('discover')->group(function () {

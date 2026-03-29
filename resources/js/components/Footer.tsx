@@ -36,6 +36,8 @@ const Footer: React.FC = () => {
                         <ul className="space-y-4 text-[14px]">
                             <li><Link href={route('footer.faqs')} className="hover:text-white/70 transition-colors">FAQs</Link></li>
                             <li><Link href={route('footer.contact')} className="hover:text-white/70 transition-colors">Contact us</Link></li>
+                            {/* <li><Link href={route('footer.sitemap')} className="">Sitemap</Link></li> */}
+                            <li><a href="/sitemap.xml" target="_blank" className="hover:text-white/70 transition-colors">Sitemap</a></li>
                         </ul>
                     </div>
 
