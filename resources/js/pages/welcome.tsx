@@ -16,7 +16,10 @@ export default function Welcome() {
         <>
             <Head title="World's Biggest Destination Wedding Exhibition" />
 
-            <LeadCaptureModal onSuccess={() => setIsUnlocked(true)} />
+            <LeadCaptureModal 
+                onSuccess={() => setIsUnlocked(true)} 
+                onClose={() => setIsUnlocked(true)} 
+            />
 
             <div className={`min-h-screen bg-white ${!isUnlocked ? 'blur-md pointer-events-none' : 'transition-all duration-1000'}`}>
                 <Navbar />

@@ -19,17 +19,27 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ onSuccess, onClose 
 
     useEffect(() => {
         const isLeadsCaptured = localStorage.getItem('wedding_expo_leads_captured');
+        
         if (isLeadsCaptured) {
             setIsOpen(false);
             onSuccess();
         } else {
-            setIsOpen(true);
+            // Show popup automatically after a 1.5s delay for better UX
+            const timer = setTimeout(() => {
+                setIsOpen(true);
+            }, 1500);
+            return () => clearTimeout(timer);
         }
-    }, [onSuccess]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const handleClose = () => {
         setIsOpen(false);
-        if (onClose) onClose();
+        if (onClose) {
+            onClose();
+        } else {
+            onSuccess();
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

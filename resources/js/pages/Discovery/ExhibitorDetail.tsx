@@ -47,7 +47,10 @@ const ExhibitorDetail: React.FC<ExhibitorProps> = ({ exhibitor }) => {
         <div className="min-h-screen bg-white font-['expoSans',sans-serif]">
             <Head title={`${exhibitor.name} - State Pavilion`} />
             
-            <LeadCaptureModal onSuccess={() => setIsUnlocked(true)} />
+            <LeadCaptureModal 
+                onSuccess={() => setIsUnlocked(true)} 
+                onClose={() => setIsUnlocked(true)} 
+            />
 
             <Navbar />
 

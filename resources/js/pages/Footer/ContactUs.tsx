@@ -4,8 +4,8 @@ import React from 'react';
 
 const ContactUs = () => {
     return (
-        <SimplePageLayout 
-            title="Contact Us" 
+        <SimplePageLayout
+            title="Contact Us"
             subtitle="We're here to help. Reach out to us for any inquiries or support."
         >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
@@ -13,7 +13,7 @@ const ContactUs = () => {
                     <section>
                         <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
                         <p className="text-lg text-[#555555] mb-8">
-                            Whether you're an exhibitor, visitor, or partner, we'd love to hear from you. 
+                            Whether you're an exhibitor, visitor, or partner, we'd love to hear from you.
                             Our team is dedicated to making your experience at Wedding Expo India exceptional.
                         </p>
                     </section>
@@ -25,8 +25,8 @@ const ContactUs = () => {
                             </div>
                             <div>
                                 <h3 className="font-bold text-lg">Email Us</h3>
-                                <p className="text-[#555555]">info@weddingexpoindia.in</p>
-                                <p className="text-[#555555]">support@weddingexpoindia.in</p>
+                                <p className="text-[#555555]">team@exhibition.org.in</p>
+                                <p className="text-[#555555]">business@weddingindiaexpo.com</p>
                             </div>
                         </div>
 
@@ -36,8 +36,8 @@ const ContactUs = () => {
                             </div>
                             <div>
                                 <h3 className="font-bold text-lg">Call Us</h3>
-                                <p className="text-[#555555]">+91 99918 56776</p>
-                              
+                                <p className="text-[#555555]">+91 999-185-6776</p>
+
                             </div>
                         </div>
 

@@ -89,7 +89,7 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                             </span>
                             <div className="h-6 w-px bg-gray-200" />
                             <a href="tel:+919991856776" className="text-[13px] font-bold text-black hover:text-[--gold] transition-colors">
-                                Call Us: +91 99918 56776
+                                Call Us: +91 999-185-6776
                             </a>
                         </div>
 
@@ -189,12 +189,7 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                             <button className="p-2 hover:bg-gray-50 rounded-full transition-colors hidden md:block">
                                 <Search size={20} />
                             </button>
-                            <button
-                                onClick={() => setIsDownloadModalOpen(true)}
-                                className="border-2 border-[--gold] text-[--gold] rounded-sm px-6 py-2 text-[14px] font-bold hover:bg-[--gold] hover:text-white transition-all hidden md:block"
-                            >
-                                Download Map
-                            </button>
+
                             <Link
                                 href={route('discover.exhibitors')}
                                 className="border-2 border-black rounded-sm px-6 py-2 text-[14px] font-bold hover:bg-black hover:text-white transition-all hidden md:block"
@@ -319,17 +314,7 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                                 Discover Destinations
                             </Link>
                         </div>
-                        <div className="p-8 pt-0">
-                            <button
-                                onClick={() => {
-                                    setIsMobileMenuOpen(false);
-                                    setIsDownloadModalOpen(true);
-                                }}
-                                className="block w-full border border-[--gold] rounded-[4px] py-[14px] text-[16px] font-bold text-center text-[--gold] hover:bg-[--gold] hover:text-white transition-all"
-                            >
-                                Download Map
-                            </button>
-                        </div>
+
                     </div>
                 </div>
             )}

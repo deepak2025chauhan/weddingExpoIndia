@@ -20,7 +20,10 @@ const ExpoMap = () => {
     return (
         <div className="min-h-screen bg-[#111111] text-white font-['expoSans',sans-serif]">
             <Head title="Interactive Expo Map" />
-            <LeadCaptureModal onSuccess={() => setIsUnlocked(true)} />
+            <LeadCaptureModal 
+                onSuccess={() => setIsUnlocked(true)} 
+                onClose={() => setIsUnlocked(true)} 
+            />
             <Navbar />
 
             <div className={`${!isUnlocked ? 'blur-md pointer-events-none select-none' : 'transition-all duration-1000'}`}>
