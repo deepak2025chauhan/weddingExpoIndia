@@ -9,6 +9,7 @@ import StatsSection from '@/components/StatsSection';
 import { Head } from '@inertiajs/react';
 import React, { useState } from 'react';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
+import SpeakersSection from '@/components/SpeakersSection';
 
 export default function Welcome() {
     const [isUnlocked, setIsUnlocked] = useState(false);
@@ -26,6 +27,7 @@ export default function Welcome() {
                 <main>
                     <Hero />
                     <StatsSection />
+                    <SpeakersSection />
                     <ExpoCitySection />
                     <CollaborateSection />
                     <PartnerSection />
