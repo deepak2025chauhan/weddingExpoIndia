@@ -84,26 +84,15 @@ const speakerData: Speaker[] = [
     }
 ];
 
-const AccentSVG: React.FC<{ type: number }> = ({ type }) => {
-    const colors = {
-        1: '#4e67eb', // Blue
-        2: '#00d1ff', // Cyan
-        3: '#8a4fff', // Purple
-        4: '#ff5c00'  // Orange
+// GFF uses background images for card accents
+const getSpeakerBg = (type: number) => {
+    const bgs = {
+        1: 'https://www.globalfintechfest.com/images/speaker-bg01.webp',
+        2: 'https://www.globalfintechfest.com/images/speaker-bg02.webp',
+        3: 'https://www.globalfintechfest.com/images/speaker-bg03.webp',
+        4: 'https://www.globalfintechfest.com/images/speaker-bg04.webp'
     };
-    
-    // Mapping 1-4 to specific paths or types
-    const color = colors[type as keyof typeof colors] || colors[1];
-
-    return (
-        <div className="absolute top-0 right-0 w-[142px] h-[122px] pointer-events-none overflow-hidden">
-            <svg width="142" height="122" viewBox="0 0 142 122" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-0 right-0">
-                <path d="M20 10 C 60 10, 80 60, 160 40" stroke={color} strokeWidth="3" strokeLinecap="round" />
-                <path d="M10 30 C 55 30, 75 80, 160 60" stroke={color} strokeWidth="3" strokeLinecap="round" opacity="0.6" />
-                <path d="M0 50 C 50 50, 70 100, 160 80" stroke={color} strokeWidth="3" strokeLinecap="round" opacity="0.3" />
-            </svg>
-        </div>
-    );
+    return bgs[type as keyof typeof bgs] || bgs[1];
 };
 
 const SpeakerCard: React.FC<{ speaker: Speaker; index: number }> = ({ speaker, index }) => {
@@ -113,29 +102,33 @@ const SpeakerCard: React.FC<{ speaker: Speaker; index: number }> = ({ speaker, i
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: (index % 4) * 0.05 }}
             viewport={{ once: true }}
-            className={`bg-white p-[34px] pb-0 box-border mobile:w-[calc(50%-10px)] lg:w-[calc(25%-18px)] w-full flex flex-col justify-between relative overflow-hidden parent-content transition-all duration-200 speaker-bg-${speaker.accentType} cursor-pointer hover-effect group`}
+            className="bg-white  pb-0 box-border mobile:w-[calc(50%-10px)] lg:w-[calc(25%-18px)] w-full flex flex-col justify-between relative overflow-hidden parent-content transition-all duration-300 cursor-pointer group"
         >
-            <AccentSVG type={speaker.accentType} />
+            {/* 3-Line Accent Image (Top Right) */}
+            <div className="absolute top-0 right-0 z-0 w-[160px] h-[140px] overflow-hidden pointer-events-none select-none">
+                <img 
+                    src={getSpeakerBg(speaker.accentType)} 
+                    alt="accent lines" 
+                    className="absolute top-0 right-0 w-full h-full object-contain object-right-top transition-transform duration-500 ease-in-out group-hover:scale-110"
+                />
+            </div>
             
-            <div className="flex flex-col z-10">
-                <h2 className="m-0 text-black font-montserrat text-[18px] not-italic font-[800] leading-[100%] max-w-[7rem] w-full mobile:min-h-[54px] font-['Montserrat',sans-serif]">
-                    {speaker.name.split(' ').map((part, i) => (
-                        <React.Fragment key={i}>
-                            {part}{' '}
-                            {i === 0 && <br />}
-                        </React.Fragment>
+            <div className="flex flex-col px-[34px] pt-[34px] z-10 relative">
+                <h2 className="m-0 text-black font-montserrat text-[22px] not-italic font-[900] leading-[1.1] max-w-[200px] w-full font-['Montserrat',sans-serif]">
+                    {speaker.name.split(' ').map((word, i) => (
+                        <div key={i} className="whitespace-nowrap">{word}</div>
                     ))}
                 </h2>
-                <p className="text-black font-fira-sans text-[14px] not-italic font-[400] leading-[140%] m-0 mt-2 max-w-[204px] mobile:min-h-[60px] font-['Fira_Sans',sans-serif]">
+                <p className="text-[#1A1A1A] font-fira-sans text-[15px] not-italic font-[400] leading-[1.3] m-0 mt-4 max-w-[210px] font-['Fira_Sans',sans-serif]">
                     {speaker.title}
                 </p>
             </div>
 
-            <div className="mt-8 relative h-[16rem] -mx-[34px] overflow-hidden">
+            <div className=" relative h-[18rem] -mx-[34px] overflow-hidden z-10">
                 <img 
-                    alt="speaker-Image" 
+                    alt={speaker.name} 
                     src={speaker.image}
-                    className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out transform group-hover:scale-105"
                 />
             </div>
         </motion.div>
