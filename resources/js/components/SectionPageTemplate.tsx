@@ -44,31 +44,52 @@ const SectionPage: React.FC<PageProps> = ({ title, description, image = "/placeh
             <Navbar />
             
             <div className={`${!isUnlocked ? 'blur-md pointer-events-none select-none' : 'transition-all duration-1000'}`}>
-                {/* Hero Image */}
-                <div className="w-full h-[40vh] md:h-[50vh] relative overflow-hidden">
+                {/* Hero Section with Overlay */}
+                <div className="w-full h-[50vh] md:h-[500px] relative overflow-hidden">
                     <img 
                         src={image} 
                         alt={title} 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover shadow-2xl scale-105"
                     />
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent flex flex-col justify-center">
+                        <div className="max-w-7xl mx-auto px-6 w-full">
+                            <nav className="flex items-center gap-2 text-[14px] text-white/60 font-bold uppercase tracking-widest mb-8">
+                                <span>Understanding Expo</span>
+                                <span className="text-white/30">/</span>
+                                <span className="text-[#ED8B00]">{title}</span>
+                            </nav>
+                            
+                            <motion.h1 
+                                initial={{ opacity: 0, x: -30 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.8, ease: "easeOut" }}
+                                className="text-[56px] md:text-[88px] font-black text-white leading-[0.95] mb-10 max-w-4xl tracking-tighter"
+                            >
+                                {title.split(' ').map((word, i) => (
+                                    <span key={i} className="block">{word}</span>
+                                ))}
+                            </motion.h1>
+                            
+                            <motion.div 
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.3, duration: 0.8 }}
+                                className="max-w-2xl"
+                            >
+                                <p className="text-[20px] md:text-[26px] text-white/90 leading-[1.4] font-medium tracking-tight">
+                                    {description}
+                                </p>
+                                
+                                <div className="mt-12 h-1 w-24 bg-[#ED8B00]" />
+                            </motion.div>
+                        </div>
+                    </div>
                 </div>
 
-                {/* Breadcrumbs & Title Section */}
-                <div className="max-w-7xl mx-auto px-6 py-12 md:py-16">
-                    <nav className="flex items-center gap-2 text-[14px] text-[#A0A0A0] font-bold uppercase tracking-wider mb-4">
-                        <span>Understanding Expo</span>
-                        <span>/</span>
-                    </nav>
-                    
-                    <h1 className="text-[48px] md:text-[64px] font-bold text-[#191919] leading-tight mb-8">
-                        {title}
-                    </h1>
-                    
-                    <p className="text-[18px] md:text-[22px] text-[#555555] max-w-4xl leading-relaxed">
-                        {description}
-                    </p>
-
-                    <div className="h-[0.8px] bg-[#EAEAEA] w-full mt-16" />
+                {/* Content Divider */}
+                <div className="max-w-7xl mx-auto px-6 pt-12">
+                    <div className="h-[0.8px] bg-[#EAEAEA] w-full" />
                 </div>
 
                 {/* Main Content Area */}

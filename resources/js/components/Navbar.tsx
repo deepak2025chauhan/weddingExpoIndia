@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronDown, X, Search } from 'lucide-react';
 import { Link } from '@inertiajs/react';
 import DownloadMapModal from './DownloadMapModal';
@@ -16,6 +16,32 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
     const [mobileVisitorsOpen, setMobileVisitorsOpen] = useState(false);
     const [mobileUnderstandingOpen, setMobileUnderstandingOpen] = useState(false);
     const [mobileExperiencesOpen, setMobileExperiencesOpen] = useState(false);
+    const [isNavVisible, setIsNavVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            // Auto-hide logic for desktop
+            if (window.innerWidth >= 768) {
+                if (currentScrollY < 10) {
+                    setIsNavVisible(true);
+                } else if (currentScrollY > lastScrollY && currentScrollY > 80) {
+                    setIsNavVisible(false); // Scrolling down
+                } else if (currentScrollY < lastScrollY) {
+                    setIsNavVisible(true); // Scrolling up
+                }
+            } else {
+                setIsNavVisible(true); // Always show on mobile
+            }
+
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [lastScrollY]);
 
     const understandingExpoLinks = [
         { label: "Benefits as an Exhibitor", href: "/understanding-expo/participants/benefits" },
@@ -64,7 +90,7 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
 
     return (
         <>
-            <nav className={`w-full bg-white border-gray-100 sticky top-0 z-[100] font-['expoSans',sans-serif] transition-transform duration-500 ease-in-out ${visible && !isMobileMenuOpen ? 'translate-y-0' : (isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full')}`}>
+            <nav className={`w-full bg-white border-gray-100 sticky top-0 z-[100] font-['expoSans',sans-serif] transition-transform duration-500 ease-in-out ${isNavVisible && visible && !isMobileMenuOpen ? 'translate-y-0 shadow-none' : (isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full shadow-md')}`}>
                 {/* Top Tier */}
                 <div className="border-b-[0.8px] max-w-7xl mx-auto border-[rgba(208,208,208,0.25)] py-3 px-6 lg:px-0 hidden md:block">
                     <div className="flex items-center justify-between">
