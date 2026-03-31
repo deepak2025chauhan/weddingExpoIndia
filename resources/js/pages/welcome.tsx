@@ -8,19 +8,19 @@ import PartnerSection from '@/components/PartnerSection';
 import StatsSection from '@/components/StatsSection';
 import { Head } from '@inertiajs/react';
 import React, { useState } from 'react';
-import LeadCaptureModal from '@/components/LeadCaptureModal';
+// import LeadCaptureModal from '@/components/LeadCaptureModal';
 import SpeakersSection from '@/components/SpeakersSection';
 
 export default function Welcome() {
-    const [isUnlocked, setIsUnlocked] = useState(false);
+    const [isUnlocked, setIsUnlocked] = useState(true);
     return (
         <>
             <Head title="World's Biggest Destination Wedding Exhibition" />
 
-            <LeadCaptureModal 
+            {/* <LeadCaptureModal 
                 onSuccess={() => setIsUnlocked(true)} 
                 onClose={() => setIsUnlocked(true)} 
-            />
+            /> */}
 
             <div className={`min-h-screen bg-white ${!isUnlocked ? 'blur-md pointer-events-none' : 'transition-all duration-1000'}`}>
                 <Navbar />
