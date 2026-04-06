@@ -3,8 +3,8 @@ import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
-import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid } from 'lucide-react';
+import { Link, usePage } from '@inertiajs/react';
+import { LayoutGrid, Settings, Shield } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -15,20 +15,10 @@ const mainNavItems: NavItem[] = [
     },
 ];
 
-const footerNavItems: NavItem[] = [
-    {
-        title: 'Repository',
-        url: 'https://github.com/laravel/react-starter-kit',
-        icon: Folder,
-    },
-    {
-        title: 'Documentation',
-        url: 'https://laravel.com/docs/starter-kits',
-        icon: BookOpen,
-    },
-];
+const footerNavItems: NavItem[] = [];
 
 export function AppSidebar() {
+    const { auth } = usePage().props as any;
     return (
         <Sidebar collapsible="icon" variant="inset">
             <SidebarHeader>
@@ -45,6 +35,22 @@ export function AppSidebar() {
 
             <SidebarContent>
                 <NavMain items={mainNavItems} />
+                {['super_admin', 'admin', 'manager'].includes((auth.user as any)?.role) && (
+                    <NavMain 
+                        items={[
+                            {
+                                title: 'Settings',
+                                url: '/admin/settings',
+                                icon: Settings,
+                            },
+                            ...((auth.user as any)?.role === 'super_admin' ? [{
+                                title: 'Roles',
+                                url: '/admin/users',
+                                icon: Shield,
+                            }] : [])
+                        ]} 
+                    />
+                )}
             </SidebarContent>
 
             <SidebarFooter>

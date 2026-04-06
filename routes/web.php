@@ -225,3 +225,20 @@ Route::get('/expo-map', function () {
 Route::get('/news', function () {
     return Inertia::render('News');
 })->name('news');
+
+// Admin Routes
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return Inertia::render('Admin/Dashboard');
+    })->name('admin.dashboard');
+
+    Route::get('/settings', [\App\Http\Controllers\Admin\SettingController::class, 'index'])->name('admin.settings');
+    Route::post('/settings', [\App\Http\Controllers\Admin\SettingController::class, 'update'])->name('admin.settings.update');
+
+    // Super Admin Only: User Role Management
+    Route::middleware('super_admin')->group(function () {
+        Route::get('/users', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin.users.index');
+        Route::patch('/users/{user}/role', [\App\Http\Controllers\Admin\UserController::class, 'updateRole'])->name('admin.users.update-role');
+        Route::post('/users/permissions', [\App\Http\Controllers\Admin\UserController::class, 'updatePermissions'])->name('admin.users.update-permissions');
+    });
+});

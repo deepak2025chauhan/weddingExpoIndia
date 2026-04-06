@@ -45,6 +45,9 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'site' => [
+                'settings' => \App\Models\Setting::allMapped(),
+            ],
         ]);
     }
 }

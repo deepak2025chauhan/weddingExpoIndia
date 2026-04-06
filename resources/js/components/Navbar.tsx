@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, X, Search } from 'lucide-react';
-import { Link } from '@inertiajs/react';
+import { ChevronDown, X, Search, ShieldCheck } from 'lucide-react';
+import { Link, usePage } from '@inertiajs/react';
 import DownloadMapModal from './DownloadMapModal';
 
 interface NavbarProps {
@@ -8,6 +8,8 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
+    const { auth, site } = usePage().props as any;
+    const settings = site?.settings || {};
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
     const [mobileExhibitorsOpen, setMobileExhibitorsOpen] = useState(false);
@@ -120,12 +122,14 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                         </div>
 
                         <div className="flex items-center gap-6">
-                            <Link
-                                href={route('register.now')}
-                                className="border-2 border-black rounded-sm px-6 py-2 text-[13px] font-bold hover:bg-black hover:text-white transition-all"
-                            >
-                                Register Now
-                            </Link>
+                            {(settings.show_register_button !== 'false') && (
+                                <Link
+                                    href={route('register.now')}
+                                    className="border-2 border-black rounded-sm px-6 py-2 text-[13px] font-bold hover:bg-black hover:text-white transition-all"
+                                >
+                                    Register Now
+                                </Link>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -154,61 +158,66 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                         </div>
                         {/* Desktop Links */}
                         <div className="hidden md:flex items-center gap-10 h-full">
-                            <div className="relative group h-full flex items-center">
-                                <button className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[#ED8B00] transition-colors relative py-1">
-                                    Understanding
-                                    <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180" />
-                                    {/* Animated Line */}
-                                    <div className="absolute -bottom-4 left-0 w-0 h-[3px] bg-[#ED8B00] transition-all duration-200 group-hover:w-full" />
-                                </button>
+                            {(settings.show_understanding_dropdown !== 'false') && (
+                                <div className="relative group h-full flex items-center">
+                                    <button className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[#ED8B00] transition-colors relative py-1">
+                                        Understanding
+                                        <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180" />
+                                        <div className="absolute -bottom-4 left-0 w-0 h-[3px] bg-[#ED8B00] transition-all duration-200 group-hover:w-full" />
+                                    </button>
 
-                                {/* Dropdown Menu */}
-                                <div className="absolute top-full left-0 w-[240px] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.1)] rounded-sm border border-gray-50 py-4 transition-all duration-200 origin-top z-50 opacity-0 scale-y-0 pointer-events-none group-hover:opacity-100 group-hover:scale-y-100 group-hover:pointer-events-auto">
-                                    {understandingExpoLinks.map((link, idx) => (
-                                        <Link
-                                            key={idx}
-                                            href={link.href}
-                                            className="block px-8 py-3 text-[14px] font-medium text-gray-800 hover:bg-gray-50 hover:text-[#ED8B00] transition-colors"
-                                        >
-                                            {link.label}
-                                        </Link>
-                                    ))}
+                                    <div className="absolute top-full left-0 w-[240px] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.1)] rounded-sm border border-gray-50 py-4 transition-all duration-200 origin-top z-50 opacity-0 scale-y-0 pointer-events-none group-hover:opacity-100 group-hover:scale-y-100 group-hover:pointer-events-auto">
+                                        {understandingExpoLinks.map((link, idx) => (
+                                            <Link
+                                                key={idx}
+                                                href={link.href}
+                                                className="block px-8 py-3 text-[14px] font-medium text-gray-800 hover:bg-gray-50 hover:text-[#ED8B00] transition-colors"
+                                            >
+                                                {link.label}
+                                            </Link>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
+                            )}
 
-                            <div className="relative group h-full flex items-center">
-                                <button className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[#ED8B00] transition-colors relative py-1">
-                                    Experiences
-                                    <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180" />
-                                    {/* Animated Line */}
-                                    <div className="absolute -bottom-4 left-0 w-0 h-[3px] bg-[#ED8B00] transition-all duration-200 group-hover:w-full" />
-                                </button>
+                            {(settings.show_experiences_dropdown !== 'false') && (
+                                <div className="relative group h-full flex items-center">
+                                    <button className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[#ED8B00] transition-colors relative py-1">
+                                        Experiences
+                                        <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180" />
+                                        <div className="absolute -bottom-4 left-0 w-0 h-[3px] bg-[#ED8B00] transition-all duration-200 group-hover:w-full" />
+                                    </button>
 
-                                {/* Dropdown Menu */}
-                                <div className="absolute top-full left-0 w-[240px] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.1)] rounded-sm border border-gray-50 py-4 transition-all duration-200 origin-top z-50 opacity-0 scale-y-0 pointer-events-none group-hover:opacity-100 group-hover:scale-y-100 group-hover:pointer-events-auto">
-                                    {experiencesLinks.map((link, idx) => (
-                                        <Link
-                                            key={idx}
-                                            href={link.href}
-                                            className="block px-8 py-3 text-[14px] font-medium text-gray-800 hover:bg-gray-50 hover:text-[#ED8B00] transition-colors"
-                                        >
-                                            {link.label}
-                                        </Link>
-                                    ))}
+                                    <div className="absolute top-full left-0 w-[240px] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.1)] rounded-sm border border-gray-50 py-4 transition-all duration-200 origin-top z-50 opacity-0 scale-y-0 pointer-events-none group-hover:opacity-100 group-hover:scale-y-100 group-hover:pointer-events-auto">
+                                        {experiencesLinks.map((link, idx) => (
+                                            <Link
+                                                key={idx}
+                                                href={link.href}
+                                                className="block px-8 py-3 text-[14px] font-medium text-gray-800 hover:bg-gray-50 hover:text-[#ED8B00] transition-colors"
+                                            >
+                                                {link.label}
+                                            </Link>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="relative group h-full flex items-center">
-                                <Link href="/floor-plan" className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[#ED8B00] transition-colors relative py-1">
-                                    Expo Map
-                                    <div className="absolute -bottom-4 left-0 w-0 h-[3px] bg-[#ED8B00] transition-all duration-200 group-hover:w-full" />
-                                </Link>
-                            </div>
-                            <div className="relative group h-full flex items-center">
-                                <Link href="/news" className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[#ED8B00] transition-colors relative py-1">
-                                    News
-                                    <div className="absolute -bottom-4 left-0 w-0 h-[3px] bg-[#ED8B00] transition-all duration-200 group-hover:w-full" />
-                                </Link>
-                            </div>
+                            )}
+                            {(settings.show_expo_map_link !== 'false') && (
+                                <div className="relative group h-full flex items-center">
+                                    <Link href="/floor-plan" className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[#ED8B00] transition-colors relative py-1">
+                                        Expo Map
+                                        <div className="absolute -bottom-4 left-0 w-0 h-[3px] bg-[#ED8B00] transition-all duration-200 group-hover:w-full" />
+                                    </Link>
+                                </div>
+                            )}
+                            {(settings.show_news_link !== 'false') && (
+                                <div className="relative group h-full flex items-center">
+                                    <Link href="/news" className="text-[15px] font-bold text-gray-900 flex items-center gap-1 group-hover:text-[#ED8B00] transition-colors relative py-1">
+                                        News
+                                        <div className="absolute -bottom-4 left-0 w-0 h-[3px] bg-[#ED8B00] transition-all duration-200 group-hover:w-full" />
+                                    </Link>
+                                </div>
+                            )}
+                  
                         </div>
 
                         <div className="flex items-center gap-4">
@@ -216,12 +225,14 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                                 <Search size={20} />
                             </button>
 
-                            <Link
-                                href={route('discover.exhibitors')}
-                                className="border-2 border-black rounded-sm px-6 py-2 text-[14px] font-bold hover:bg-black hover:text-white transition-all hidden md:block"
-                            >
-                                Discover Destinations
-                            </Link>
+                            {(settings.show_discover_button !== 'false') && (
+                                <Link
+                                    href={route('discover.exhibitors')}
+                                    className="border-2 border-black rounded-sm px-6 py-2 text-[14px] font-bold hover:bg-black hover:text-white transition-all hidden md:block"
+                                >
+                                    Discover Destinations
+                                </Link>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -256,90 +267,103 @@ const Navbar: React.FC<NavbarProps> = ({ visible = true }) => {
                     {/* Navigation Links */}
                     <div className="grow overflow-y-auto" style={{ backgroundColor: '#ffffff' }}>
                         <div className="flex flex-col">
+                            {(settings.show_understanding_dropdown !== 'false') && (
+                                <div className="border-b border-gray-100">
+                                    <button
+                                        onClick={() => setMobileUnderstandingOpen(!mobileUnderstandingOpen)}
+                                        className="w-full py-6 px-8 flex items-center justify-between text-[16px] font-bold text-black hover:text-[--gold] transition-colors"
+                                    >
+                                        Understanding
+                                        <ChevronDown size={20} className={`text-gray-400 transition-transform ${mobileUnderstandingOpen ? '' : '-rotate-90'}`} />
+                                    </button>
+                                    {mobileUnderstandingOpen && (
+                                        <div className="bg-gray-50/50 pb-4 px-8 flex flex-col">
+                                            {understandingExpoLinks.map((link, idx) => (
+                                                <Link
+                                                    key={idx}
+                                                    href={link.href}
+                                                    onClick={() => setIsMobileMenuOpen(false)}
+                                                    className="py-3 text-[15px] font-medium text-gray-600 hover:text-[--gold] transition-colors"
+                                                >
+                                                    {link.label}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+                            {(settings.show_experiences_dropdown !== 'false') && (
+                                <div className="border-b border-gray-100">
+                                    <button
+                                        onClick={() => setMobileExperiencesOpen(!mobileExperiencesOpen)}
+                                        className="w-full py-6 px-8 flex items-center justify-between text-[16px] font-bold text-black hover:text-[--gold] transition-colors"
+                                    >
+                                        Experiences
+                                        <ChevronDown size={20} className={`text-gray-400 transition-transform ${mobileExperiencesOpen ? '' : '-rotate-90'}`} />
+                                    </button>
+                                    {mobileExperiencesOpen && (
+                                        <div className="bg-gray-50/50 pb-4 px-8 flex flex-col">
+                                            {experiencesLinks.map((link, idx) => (
+                                                <Link
+                                                    key={idx}
+                                                    href={link.href}
+                                                    onClick={() => setIsMobileMenuOpen(false)}
+                                                    className="py-3 text-[15px] font-medium text-gray-600 hover:text-[--gold] transition-colors"
+                                                >
+                                                    {link.label}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+                            <div className="">
+                                {(settings.show_expo_map_link !== 'false') && (
+                                    <Link
+                                        href="/floor-plan"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="w-full py-6 px-8 block text-[16px] font-bold text-black hover:text-[--gold] transition-colors border-b border-gray-100"
+                                    >
+                                        Expo Map
+                                    </Link>
+                                )}
+                                {(settings.show_news_link !== 'false') && (
+                                    <Link
+                                        href="/news"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="w-full py-6 px-8 block text-[16px] font-bold text-black hover:text-[--gold] transition-colors border-b border-gray-100"
+                                    >
+                                        News
+                                    </Link>
+                                )}
+                            </div>
 
-                            <div className="border-b border-gray-100">
-                                <button
-                                    onClick={() => setMobileUnderstandingOpen(!mobileUnderstandingOpen)}
-                                    className="w-full py-6 px-8 flex items-center justify-between text-[16px] font-bold text-black hover:text-[--gold] transition-colors"
-                                >
-                                    Understanding
-                                    <ChevronDown size={20} className={`text-gray-400 transition-transform ${mobileUnderstandingOpen ? '' : '-rotate-90'}`} />
-                                </button>
-                                {mobileUnderstandingOpen && (
-                                    <div className="bg-gray-50/50 pb-4 px-8 flex flex-col">
-                                        {understandingExpoLinks.map((link, idx) => (
-                                            <Link
-                                                key={idx}
-                                                href={link.href}
-                                                onClick={() => setIsMobileMenuOpen(false)}
-                                                className="py-3 text-[15px] font-medium text-gray-600 hover:text-[--gold] transition-colors"
-                                            >
-                                                {link.label}
-                                            </Link>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                            <div className="border-b border-gray-100">
-                                <button
-                                    onClick={() => setMobileExperiencesOpen(!mobileExperiencesOpen)}
-                                    className="w-full py-6 px-8 flex items-center justify-between text-[16px] font-bold text-black hover:text-[--gold] transition-colors"
-                                >
-                                    Experiences
-                                    <ChevronDown size={20} className={`text-gray-400 transition-transform ${mobileExperiencesOpen ? '' : '-rotate-90'}`} />
-                                </button>
-                                {mobileExperiencesOpen && (
-                                    <div className="bg-gray-50/50 pb-4 px-8 flex flex-col">
-                                        {experiencesLinks.map((link, idx) => (
-                                            <Link
-                                                key={idx}
-                                                href={link.href}
-                                                onClick={() => setIsMobileMenuOpen(false)}
-                                                className="py-3 text-[15px] font-medium text-gray-600 hover:text-[--gold] transition-colors"
-                                            >
-                                                {link.label}
-                                            </Link>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                            <div className="border-b border-gray-100">
-                                <Link
-                                    href="/floor-plan"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    className="w-full py-6 px-8 block text-[16px] font-bold text-black hover:text-[--gold] transition-colors border-b border-gray-100"
-                                >
-                                    Expo Map
-                                </Link>
-                                <Link
-                                    href="/news"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    className="w-full py-6 px-8 block text-[16px] font-bold text-black hover:text-[--gold] transition-colors border-b border-gray-100"
-                                >
-                                    News
-                                </Link>
-                            </div>
+
                         </div>
 
                         {/* CTA Button */}
-                        <div className="p-8  pt-10">
-                            <Link
-                                href={route('register.now')}
-                                onClick={() => setIsMobileMenuOpen(false)}
-                                className="block w-full border border-black rounded-[4px] py-[14px] text-[16px] font-bold text-center text-black hover:bg-black hover:text-white transition-all"
-                            >
-                                Register Now
-                            </Link>
-                        </div>
-                        <div className="p-8 pt-0">
-                            <Link
-                                href={route('discover.exhibitors')}
-                                onClick={() => setIsMobileMenuOpen(false)}
-                                className="block w-full border border-black rounded-[4px] py-[14px] text-[16px] font-bold text-center text-black hover:bg-black hover:text-white transition-all"
-                            >
-                                Discover Destinations
-                            </Link>
-                        </div>
+                        {(settings.show_register_button !== 'false') && (
+                            <div className="p-8 pt-10">
+                                <Link
+                                    href={route('register.now')}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="block w-full border border-black rounded-[4px] py-[14px] text-[16px] font-bold text-center text-black hover:bg-black hover:text-white transition-all"
+                                >
+                                    Register Now
+                                </Link>
+                            </div>
+                        )}
+                        {(settings.show_discover_button !== 'false') && (
+                            <div className="p-8 pt-0">
+                                <Link
+                                    href={route('discover.exhibitors')}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="block w-full border border-black rounded-[4px] py-[14px] text-[16px] font-bold text-center text-black hover:bg-black hover:text-white transition-all"
+                                >
+                                    Discover Destinations
+                                </Link>
+                            </div>
+                        )}
 
                     </div>
                 </div>
